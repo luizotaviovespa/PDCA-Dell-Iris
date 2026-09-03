@@ -3,338 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dell'iris · PDCA Semanal · Qualidade de Operação · 03–09 ago 2026</title>
+<title>Dell'iris · Fechamento Mensal · Agosto 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --ink:#1C1333;          /* fundo profundo */
-  --ragga:#2D204E;        /* roxo Ragga — superfícies */
-  --ragga-soft:#3D2E66;   /* bordas / elevação */
-  --lilac:#B9A8E8;        /* texto secundário */
-  --cream:#F4EFE7;        /* texto principal */
-  --abraco:#FF8A5C;       /* accent quente */
-  --ok:#6EE7B7;
-  --warn:#FFC46B;
-  --bad:#FF7B93;
-  --display:'Fraunces', Georgia, 'Times New Roman', serif;
-  --body:'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%}
-body{
-  background:var(--ink);
-  color:var(--cream);
-  font-family:var(--body);
-  font-size:16px;
-  line-height:1.5;
-  overflow:hidden;
-}
+:root{--ink:#1C1333;--ragga:#2D204E;--ragga-soft:#3D2E66;--lilac:#B9A8E8;--cream:#F4EFE7;--abraco:#FF8A5C;--ok:#6EE7B7;--warn:#FFC46B;--bad:#FF7B93;
+  --display:'Fraunces', Georgia, 'Times New Roman', serif;--body:'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%}
+body{background:var(--ink);color:var(--cream);font-family:var(--body);font-size:16px;line-height:1.5;overflow:hidden}
 ::selection{background:var(--abraco);color:var(--ink)}
-
-/* ---------- casca do deck ---------- */
 #progress{position:fixed;top:0;left:0;height:3px;background:var(--abraco);width:0%;z-index:50;transition:width .35s ease}
 #deck{height:100%;position:relative}
-.slide{
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;
-  padding:clamp(20px,4.5vw,64px) clamp(20px,6vw,88px);
-  opacity:0;visibility:hidden;transform:translateX(24px);
-  transition:opacity .38s ease,transform .38s ease,visibility .38s;
-  overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
-}
-.slide.active{opacity:1;visibility:visible;transform:none}
-.slide.prev{transform:translateX(-24px)}
-
-/* arco do abraço — assinatura visual */
-.slide::before{
-  content:"";position:absolute;right:-18vmax;top:-18vmax;width:46vmax;height:46vmax;
-  border-radius:50%;pointer-events:none;
-  background:radial-gradient(circle at center, transparent 55%, rgba(255,138,92,.08) 55.5%, transparent 58%),
-             radial-gradient(circle at center, transparent 64%, rgba(185,168,232,.07) 64.5%, transparent 67%),
-             radial-gradient(circle at center, transparent 73%, rgba(255,138,92,.05) 73.5%, transparent 76%);
-}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;padding:clamp(20px,4.5vw,64px) clamp(20px,6vw,88px);opacity:0;visibility:hidden;transform:translateX(24px);transition:opacity .38s ease,transform .38s ease,visibility .38s;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.slide.active{opacity:1;visibility:visible;transform:none}.slide.prev{transform:translateX(-24px)}
+.slide::before{content:"";position:absolute;right:-18vmax;top:-18vmax;width:46vmax;height:46vmax;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle at center, transparent 55%, rgba(255,138,92,.08) 55.5%, transparent 58%),radial-gradient(circle at center, transparent 64%, rgba(185,168,232,.07) 64.5%, transparent 67%),radial-gradient(circle at center, transparent 73%, rgba(255,138,92,.05) 73.5%, transparent 76%)}
 .slide>*{position:relative;z-index:1}
-
-/* ---------- navegação ---------- */
-#nav{
-  position:fixed;bottom:18px;right:20px;z-index:60;
-  display:flex;align-items:center;gap:12px;
-  background:rgba(45,32,78,.82);backdrop-filter:blur(8px);
-  border:1px solid var(--ragga-soft);border-radius:999px;
-  padding:8px 14px;
-}
-#nav button{
-  background:none;border:1px solid var(--ragga-soft);color:var(--cream);
-  width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;
-  display:grid;place-items:center;transition:all .2s;
-}
-#nav button:hover{background:var(--abraco);border-color:var(--abraco);color:var(--ink)}
-#nav button:focus-visible{outline:2px solid var(--abraco);outline-offset:2px}
-#counter{font-size:13px;color:var(--lilac);letter-spacing:.08em;min-width:44px;text-align:center;font-variant-numeric:tabular-nums}
-
-/* ---------- tipografia ---------- */
-.eyebrow{
-  font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--abraco);
-  font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:10px;
-}
+#nav{position:fixed;bottom:18px;right:20px;z-index:60;display:flex;align-items:center;gap:12px;background:rgba(45,32,78,.82);backdrop-filter:blur(8px);border:1px solid var(--ragga-soft);border-radius:999px;padding:8px 14px}
+#nav button{background:none;border:1px solid var(--ragga-soft);color:var(--cream);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;display:grid;place-items:center;transition:all .2s}
+#nav button:hover{background:var(--abraco);border-color:var(--abraco);color:var(--ink)}#nav button:focus-visible{outline:2px solid var(--abraco);outline-offset:2px}
+#counter{font-size:13px;color:var(--lilac);letter-spacing:.08em;min-width:52px;text-align:center;font-variant-numeric:tabular-nums}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--abraco);font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:10px}
 .eyebrow::after{content:"";height:1px;width:46px;background:var(--abraco);opacity:.55}
 h1{font-family:var(--display);font-weight:600;font-size:clamp(34px,7vw,84px);line-height:1.02;letter-spacing:-.01em}
-h2{font-family:var(--display);font-weight:600;font-size:clamp(26px,4.2vw,46px);line-height:1.08;margin-bottom:6px}
-.sub{color:var(--lilac);font-size:clamp(14px,1.6vw,17px);max-width:62ch}
-.num{font-variant-numeric:tabular-nums}
-
-/* ---------- capa ---------- */
-#s1{justify-content:center}
-#s1 .marca{font-family:var(--display);font-style:italic;font-weight:400;color:var(--abraco);font-size:clamp(17px,2.2vw,24px);margin-top:6px}
-#s1 .titulo-area{margin:auto 0}
-#s1 .cover-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
-.pill{
-  border:1px solid var(--ragga-soft);background:rgba(45,32,78,.55);
-  border-radius:999px;padding:8px 16px;font-size:13.5px;color:var(--cream);
-}
-.pill b{color:var(--abraco);font-weight:700}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(24px,3.8vw,42px);line-height:1.1;margin-bottom:6px}
+.sub{color:var(--lilac);font-size:clamp(14px,1.6vw,17px);max-width:78ch}.num{font-variant-numeric:tabular-nums}
+#s1{justify-content:center}#s1 .marca{font-family:var(--display);font-style:italic;font-weight:400;color:var(--abraco);font-size:clamp(17px,2.2vw,24px);margin-top:6px}
+#s1 .titulo-area{margin:auto 0}#s1 .cover-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.pill{border:1px solid var(--ragga-soft);background:rgba(45,32,78,.55);border-radius:999px;padding:8px 16px;font-size:13.5px;color:var(--cream)}.pill b{color:var(--abraco);font-weight:700}
 #s1 .rodape-capa{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;color:var(--lilac);font-size:12.5px;letter-spacing:.06em;flex-wrap:wrap}
-.hint{color:var(--lilac);font-size:12.5px;opacity:.85}
-.hint kbd{border:1px solid var(--ragga-soft);border-radius:5px;padding:1px 7px;font-family:var(--body);font-size:11.5px;background:rgba(45,32,78,.6)}
-
-/* ---------- cartões / grids ---------- */
-.grid{display:grid;gap:14px;margin-top:22px}
-.kpis{grid-template-columns:repeat(3,1fr)}
-.card{
-  background:linear-gradient(160deg, rgba(61,46,102,.5), rgba(45,32,78,.72));
-  border:1px solid var(--ragga-soft);border-radius:16px;padding:18px 20px;
-}
+.hint{color:var(--lilac);font-size:12.5px;opacity:.85}.hint kbd{border:1px solid var(--ragga-soft);border-radius:5px;padding:1px 7px;font-family:var(--body);font-size:11.5px;background:rgba(45,32,78,.6)}
+.grid{display:grid;gap:14px;margin-top:18px}.kpis{grid-template-columns:repeat(3,1fr)}.duo{grid-template-columns:1.15fr .85fr}.tri{grid-template-columns:repeat(3,1fr)}.pdca{grid-template-columns:repeat(2,1fr)}
+.card{background:linear-gradient(160deg, rgba(61,46,102,.5), rgba(45,32,78,.72));border:1px solid var(--ragga-soft);border-radius:16px;padding:18px 20px}
 .card .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac);margin-bottom:8px}
-.card .val{font-family:var(--display);font-size:clamp(28px,3.6vw,44px);font-weight:600;line-height:1}
-.card .val small{font-size:.45em;color:var(--lilac);font-family:var(--body);font-weight:500;letter-spacing:.02em}
+.card .val{font-family:var(--display);font-size:clamp(28px,3.6vw,44px);font-weight:600;line-height:1}.card .val small{font-size:.45em;color:var(--lilac);font-family:var(--body);font-weight:500;letter-spacing:.02em}
 .card .foot{font-size:12.5px;color:var(--lilac);margin-top:10px}
 .delta{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:700;border-radius:999px;padding:3px 10px;margin-top:10px}
-.delta.up{background:rgba(110,231,183,.14);color:var(--ok)}
-.delta.down{background:rgba(255,123,147,.14);color:var(--bad)}
-.delta.flat{background:rgba(185,168,232,.14);color:var(--lilac)}
-.leitura{
-  margin-top:20px;border-left:3px solid var(--abraco);
-  background:rgba(255,138,92,.07);border-radius:0 12px 12px 0;
-  padding:14px 18px;font-size:14.5px;color:var(--cream);max-width:100%;
-}
-.leitura b{color:var(--abraco)}
-
-/* ---------- barras de nota ---------- */
-.notas{display:flex;flex-direction:column;gap:16px;margin-top:24px}
-.nota-row{display:grid;grid-template-columns:150px 1fr 200px;gap:16px;align-items:center}
-.nota-row .loja{font-weight:700;font-size:15px}
-.nota-row .loja span{display:block;font-weight:400;font-size:12px;color:var(--lilac)}
-.trilho{position:relative;height:14px;border-radius:999px;background:rgba(28,19,51,.85);border:1px solid var(--ragga-soft)}
-.trilho .fill{position:absolute;inset:0;width:0;border-radius:999px;background:linear-gradient(90deg,#7a5cc9,var(--abraco));transition:width 1s cubic-bezier(.22,1,.36,1)}
-.trilho .meta47{position:absolute;left:94%;top:-5px;bottom:-5px;width:2px;background:var(--cream);opacity:.55}
-.trilho .meta47::after{content:"4,7";position:absolute;top:-18px;left:-9px;font-size:10.5px;color:var(--lilac)}
-.nota-row:not(:first-child) .meta47::after{display:none}
-.nota-row .valores{display:flex;align-items:baseline;gap:10px;justify-content:flex-end}
-.nota-row .nota{font-family:var(--display);font-size:26px;font-weight:600}
-.nota-row .aux{font-size:12px;color:var(--lilac);text-align:right}
-
-/* ---------- tabelas ---------- */
-table{width:100%;border-collapse:collapse;margin-top:20px;font-size:14px}
-th{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--lilac);font-weight:700;text-align:left;padding:10px 12px;border-bottom:1px solid var(--ragga-soft)}
-td{padding:11px 12px;border-bottom:1px solid rgba(61,46,102,.5);vertical-align:middle}
-td.num,th.num{text-align:right}
-tr td:first-child{font-weight:700}
-.tag{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 10px}
-.tag.ok{background:rgba(110,231,183,.15);color:var(--ok)}
-.tag.warn{background:rgba(255,196,107,.15);color:var(--warn)}
-.tag.bad{background:rgba(255,123,147,.15);color:var(--bad)}
-.tag.mut{background:rgba(185,168,232,.13);color:var(--lilac)}
-
-/* ---------- slide operação ---------- */
-.duo{grid-template-columns:1.15fr .85fr}
-.mini-bars{display:flex;flex-direction:column;gap:12px;margin-top:14px}
-.mb-row{display:grid;grid-template-columns:110px 1fr 118px;gap:12px;align-items:center;font-size:13.5px}
-.mb-track{height:10px;border-radius:999px;background:rgba(28,19,51,.85);border:1px solid var(--ragga-soft);position:relative;overflow:hidden}
-.mb-fill{position:absolute;inset:0;width:0;border-radius:999px;transition:width .9s ease}
-.mb-fill.warn{background:linear-gradient(90deg,#c9873d,var(--warn))}
-.mb-fill.bad{background:linear-gradient(90deg,#c9536b,var(--bad))}
-.mb-fill.calm{background:linear-gradient(90deg,#7a5cc9,var(--lilac))}
-.mb-val{text-align:right;color:var(--cream);font-weight:700}
-.mb-val small{color:var(--lilac);font-weight:400}
+.delta.up{background:rgba(110,231,183,.14);color:var(--ok)}.delta.down{background:rgba(255,123,147,.14);color:var(--bad)}.delta.flat{background:rgba(185,168,232,.14);color:var(--lilac)}
+.leitura{margin-top:18px;border-left:3px solid var(--abraco);background:rgba(255,138,92,.07);border-radius:0 12px 12px 0;padding:14px 18px;font-size:14.5px;color:var(--cream)}.leitura b{color:var(--abraco)}
 .alerta-card{border-color:rgba(255,196,107,.5);background:linear-gradient(160deg,rgba(255,196,107,.10),rgba(45,32,78,.72))}
-.alerta-card .val{color:var(--warn)}
-
-/* ---------- super scorecard ---------- */
-.criterios{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
-.crit{background:rgba(45,32,78,.6);border:1px solid var(--ragga-soft);border-radius:14px;padding:14px 16px}
-.crit .c-lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--lilac)}
-.crit .c-val{font-family:var(--display);font-size:22px;font-weight:600;margin-top:6px}
-.crit .c-sub{font-size:11.5px;color:var(--lilac);margin-top:4px}
-
-/* ---------- PDCA ---------- */
-.pdca{grid-template-columns:repeat(2,1fr)}
-#s8 .grid.pdca{flex:1;margin-top:26px}
-.bloco{border-radius:16px;padding:22px 24px;border:1px solid var(--ragga-soft)}
-.bloco h3{font-family:var(--body);font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;display:flex;gap:8px;align-items:center}
-.bloco ul{list-style:none;display:flex;flex-direction:column;gap:12px;font-size:14.5px}
-.bloco li{padding-left:16px;position:relative;color:var(--cream)}
-.bloco li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%}
-.bloco.check{background:linear-gradient(165deg,rgba(110,231,183,.08),rgba(45,32,78,.7))}
-.bloco.check h3{color:var(--ok)}.bloco.check li::before{background:var(--ok)}
-.bloco.atencao{background:linear-gradient(165deg,rgba(255,196,107,.09),rgba(45,32,78,.7))}
-.bloco.atencao h3{color:var(--warn)}.bloco.atencao li::before{background:var(--warn)}
-
-/* ---------- fecho ---------- */
-#s9{justify-content:center}
-.fonte{margin-top:auto;padding-top:22px;border-top:1px solid var(--ragga-soft);color:var(--lilac);font-size:12px;line-height:1.6;max-width:88ch}
-
+.chart{width:100%;height:auto;display:block;margin-top:6px}.chart text{font-family:var(--body)}
+.legenda{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;font-size:12px;color:var(--lilac)}.legenda span{display:inline-flex;align-items:center;gap:6px}.legenda i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.mini-bars{display:flex;flex-direction:column;gap:10px}.mb-row{display:grid;grid-template-columns:minmax(64px,1.1fr) 2fr 118px;gap:10px;align-items:center;font-size:13px}
+.mb-track{height:10px;border-radius:999px;background:rgba(28,19,51,.85);border:1px solid var(--ragga-soft);position:relative;overflow:hidden}
+.mb-fill{position:absolute;inset:0;width:0;border-radius:999px;transition:width .9s ease}.mb-fill.warn{background:linear-gradient(90deg,#c9873d,var(--warn))}.mb-fill.bad{background:linear-gradient(90deg,#c9536b,var(--bad))}.mb-fill.calm{background:linear-gradient(90deg,#7a5cc9,var(--lilac))}.mb-fill.mut{background:linear-gradient(90deg,#4a3b78,#7a5cc9)}
+.mb-val{text-align:right;color:var(--cream);font-weight:700}.mb-val small{color:var(--lilac);font-weight:400}
+table{width:100%;border-collapse:collapse;margin-top:18px;font-size:14px}th{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--lilac);font-weight:700;text-align:left;padding:10px 12px;border-bottom:1px solid var(--ragga-soft)}
+td{padding:10px 12px;border-bottom:1px solid rgba(61,46,102,.5);vertical-align:middle}td.num,th.num{text-align:right}tr td:first-child{font-weight:700}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 10px}.tag.ok{background:rgba(110,231,183,.15);color:var(--ok)}.tag.warn{background:rgba(255,196,107,.15);color:var(--warn)}.tag.bad{background:rgba(255,123,147,.15);color:var(--bad)}.tag.mut{background:rgba(185,168,232,.13);color:var(--lilac)}
+.ucard .t-top{display:flex;justify-content:space-between;align-items:center;gap:10px}.ucard .t-nome{font-family:var(--display);font-size:22px;font-weight:600}
+.ustats{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:12px}.ustats div{background:rgba(28,19,51,.6);border-radius:10px;padding:8px 6px;text-align:center}.ustats small{display:block;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--lilac)}.ustats b{font-size:16px}
+.bloco{border-radius:16px;padding:22px 24px;border:1px solid var(--ragga-soft)}.bloco h3{font-family:var(--body);font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;display:flex;gap:8px;align-items:center}
+.bloco ul{list-style:none;display:flex;flex-direction:column;gap:12px;font-size:14px}.bloco li{padding-left:16px;position:relative;color:var(--cream)}.bloco li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%}
+.bloco.check{background:linear-gradient(165deg,rgba(110,231,183,.08),rgba(45,32,78,.7))}.bloco.check h3{color:var(--ok)}.bloco.check li::before{background:var(--ok)}
+.bloco.atencao{background:linear-gradient(165deg,rgba(255,196,107,.09),rgba(45,32,78,.7))}.bloco.atencao h3{color:var(--warn)}.bloco.atencao li::before{background:var(--warn)}
+.dist-row{display:grid;grid-template-columns:46px 1fr 104px;gap:10px;align-items:center;margin-top:9px;font-size:13px}.dist-row .est{color:var(--lilac);font-weight:700}
+.dist-track{height:11px;border-radius:999px;background:rgba(45,32,78,.85);border:1px solid var(--ragga-soft);position:relative;overflow:hidden}.dist-fill{position:absolute;inset:0;width:0;border-radius:999px;transition:width .9s ease}
+.dist-fill.n5{background:linear-gradient(90deg,#4db98f,var(--ok))}.dist-fill.n4{background:linear-gradient(90deg,#7a5cc9,var(--lilac))}.dist-fill.n3{background:linear-gradient(90deg,#c9873d,var(--warn))}.dist-fill.n2,.dist-fill.n1{background:linear-gradient(90deg,#c9536b,var(--bad))}
+.dist-row .dq{text-align:right;color:var(--cream)}.dist-row .dq small{color:var(--lilac)}
+.timeline{display:flex;flex-direction:column;gap:10px;margin-top:12px}.timeline div{display:grid;grid-template-columns:76px 1fr;gap:10px;font-size:12.8px;color:var(--lilac);padding-left:10px;border-left:2px solid var(--ragga-soft)}.timeline b{color:var(--abraco);font-size:12px}.timeline span b{color:var(--cream)}
+.fonte{margin-top:auto;padding-top:20px;border-top:1px solid var(--ragga-soft);color:var(--lilac);font-size:11.5px;line-height:1.55;max-width:100%}
+@media (max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.duo,.tri,.pdca{grid-template-columns:1fr}.ustats{grid-template-columns:repeat(3,1fr)}.tbl-scroll{overflow-x:auto}.tbl-scroll table{min-width:560px}table{font-size:12.5px}th,td{padding:8px 8px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.cn-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+.cn-kpi{background:rgba(45,32,78,.6);border:1px solid var(--ragga-soft);border-radius:14px;padding:12px 16px}
+.cn-kpi .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--lilac)}.cn-kpi .v{font-family:var(--display);font-size:26px;font-weight:600;margin-top:4px}.cn-kpi .v small{font-size:.5em;color:var(--lilac);font-family:var(--body);font-weight:500}.cn-kpi .f{font-size:11.5px;color:var(--lilac);margin-top:3px}
+.cn-kpi.alerta{border-color:rgba(255,196,107,.5)}.cn-kpi.alerta .v{color:var(--warn)}
+.origem{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.origem span{border:1px solid var(--ragga-soft);border-radius:999px;padding:5px 12px;font-size:12px;color:var(--cream);background:rgba(28,19,51,.6)}.origem span b{color:var(--abraco)}
+@media (max-width:900px){.cn-kpis{grid-template-columns:repeat(2,1fr)}}
+@media print{body{overflow:visible;background:var(--ink)}#nav,#progress,.hint,#painel,#btnAval,.cta-aval{display:none}#deck{height:auto}.slide{position:relative;opacity:1;visibility:visible;transform:none;page-break-after:always;min-height:100vh;overflow:visible}}
 /* ---------- painel de avaliações ---------- */
-#btnAval{
-  position:fixed;bottom:18px;left:20px;z-index:60;
-  display:flex;align-items:center;gap:8px;
-  background:rgba(45,32,78,.82);backdrop-filter:blur(8px);
-  border:1px solid var(--ragga-soft);border-radius:999px;
-  padding:10px 18px;color:var(--cream);font-family:var(--body);
-  font-size:13px;font-weight:700;letter-spacing:.04em;cursor:pointer;
-  transition:all .2s;
-}
-#btnAval .star{color:var(--abraco)}
-#btnAval:hover{background:var(--abraco);border-color:var(--abraco);color:var(--ink)}
-#btnAval:hover .star{color:var(--ink)}
-#btnAval:focus-visible{outline:2px solid var(--abraco);outline-offset:2px}
-.cta-aval{
-  display:inline-flex;align-items:center;gap:8px;margin-top:16px;
-  background:var(--abraco);color:var(--ink);border:none;border-radius:999px;
-  padding:11px 20px;font-family:var(--body);font-size:13.5px;font-weight:700;cursor:pointer;
-  transition:transform .15s, box-shadow .15s;
-}
+#btnAval{position:fixed;bottom:18px;left:20px;z-index:60;display:flex;align-items:center;gap:8px;background:rgba(45,32,78,.82);backdrop-filter:blur(8px);border:1px solid var(--ragga-soft);border-radius:999px;padding:10px 18px;color:var(--cream);font-family:var(--body);font-size:13px;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:all .2s}
+#btnAval .star{color:var(--abraco)}#btnAval:hover{background:var(--abraco);border-color:var(--abraco);color:var(--ink)}#btnAval:hover .star{color:var(--ink)}
+.cta-aval{display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:var(--abraco);color:var(--ink);border:none;border-radius:999px;padding:11px 20px;font-family:var(--body);font-size:13.5px;font-weight:700;cursor:pointer;transition:transform .15s, box-shadow .15s}
 .cta-aval:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(255,138,92,.3)}
-#painel{
-  position:fixed;inset:0;z-index:70;background:var(--ink);
-  overflow-y:auto;-webkit-overflow-scrolling:touch;
-}
-#painel[hidden]{display:none}
+#painel{position:fixed;inset:0;z-index:70;background:var(--ink);overflow-y:auto;-webkit-overflow-scrolling:touch}#painel[hidden]{display:none}
 .p-wrap{max-width:1060px;margin:0 auto;padding:0 clamp(18px,4vw,40px) 60px}
-.p-head{
-  position:sticky;top:0;z-index:5;background:linear-gradient(var(--ink) 78%, transparent);
-  padding:22px 0 14px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;
-}
-.p-head h2{margin-bottom:2px}
-.p-head .sub{font-size:13.5px}
-#fecharPainel{
-  background:none;border:1px solid var(--ragga-soft);color:var(--cream);
-  width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:16px;flex-shrink:0;
-  display:grid;place-items:center;transition:all .2s;
-}
-#fecharPainel:hover{background:var(--abraco);border-color:var(--abraco);color:var(--ink)}
-.p-tabs{display:flex;gap:8px;margin:10px 0 22px;border-bottom:1px solid var(--ragga-soft);padding-bottom:0}
-.p-tab{
-  background:none;border:none;border-bottom:3px solid transparent;color:var(--lilac);
-  font-family:var(--body);font-size:14.5px;font-weight:700;padding:10px 16px;cursor:pointer;
-  letter-spacing:.03em;transition:color .2s,border-color .2s;
-}
-.p-tab.on{color:var(--cream);border-bottom-color:var(--abraco)}
-.p-sec{display:none}
-.p-sec.on{display:block}
+.p-head{position:sticky;top:0;z-index:5;background:linear-gradient(var(--ink) 78%, transparent);padding:22px 0 14px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.p-head h2{margin-bottom:2px}.p-head .sub{font-size:13.5px}
+#fecharPainel{background:none;border:1px solid var(--ragga-soft);color:var(--cream);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:16px;flex-shrink:0;display:grid;place-items:center;transition:all .2s}#fecharPainel:hover{background:var(--abraco);border-color:var(--abraco);color:var(--ink)}
+.p-tabs{display:flex;gap:8px;margin:10px 0 22px;border-bottom:1px solid var(--ragga-soft)}
+.p-tab{background:none;border:none;border-bottom:3px solid transparent;color:var(--lilac);font-family:var(--body);font-size:14.5px;font-weight:700;padding:10px 16px;cursor:pointer;letter-spacing:.03em;transition:color .2s,border-color .2s}.p-tab.on{color:var(--cream);border-bottom-color:var(--abraco)}
+.p-sec{display:none}.p-sec.on{display:block}
 .p-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.dist{margin-top:22px}
-.dist-row{display:grid;grid-template-columns:52px 1fr 110px;gap:12px;align-items:center;margin-top:9px;font-size:13.5px}
-.dist-row .est{color:var(--lilac);font-weight:700}
-.dist-track{height:12px;border-radius:999px;background:rgba(45,32,78,.85);border:1px solid var(--ragga-soft);position:relative;overflow:hidden}
-.dist-fill{position:absolute;inset:0;width:0;border-radius:999px;transition:width .9s ease}
-.dist-fill.n5{background:linear-gradient(90deg,#4db98f,var(--ok))}
-.dist-fill.n4{background:linear-gradient(90deg,#7a5cc9,var(--lilac))}
-.dist-fill.n3{background:linear-gradient(90deg,#c9873d,var(--warn))}
-.dist-fill.n2{background:linear-gradient(90deg,#c9536b,var(--bad))}
-.dist-fill.n1{background:linear-gradient(90deg,#c9536b,var(--bad))}
-.dist-row .dq{text-align:right;color:var(--cream)}
-.dist-row .dq small{color:var(--lilac)}
-.duo-aval{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
-.tag-bars{display:flex;flex-direction:column;gap:11px;margin-top:14px}
-.tg-row{display:grid;grid-template-columns:150px 1fr 46px;gap:10px;align-items:center;font-size:13px}
-.tg-track{height:9px;border-radius:999px;background:rgba(28,19,51,.85);border:1px solid var(--ragga-soft);position:relative;overflow:hidden}
-.tg-fill{position:absolute;inset:0;width:0;border-radius:999px;background:linear-gradient(90deg,#7a5cc9,var(--abraco));transition:width .9s ease}
-.tg-row .tv{text-align:right;font-weight:700;color:var(--cream)}
+.duo-aval{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
 .tema{border:1px solid var(--ragga-soft);border-radius:12px;padding:13px 15px;margin-top:11px;background:rgba(45,32,78,.45)}
-.tema .t-top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
-.tema .t-nome{font-weight:700;font-size:14px}
-.tema .t-qtd{font-size:11.5px;font-weight:700;color:var(--lilac);white-space:nowrap}
-.tema .t-desc{font-size:12.8px;color:var(--lilac);margin-top:5px;line-height:1.45}
-.tema .t-desc em{color:var(--cream);font-style:italic}
-.tema.crit{border-color:rgba(255,123,147,.35);background:rgba(255,123,147,.05)}
-.tema.crit .t-qtd{color:var(--bad)}
-.tema.alerta{border-color:rgba(255,196,107,.4);background:rgba(255,196,107,.06)}
-.tema.alerta .t-qtd{color:var(--warn)}
-.filtros{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
-.chip{
-  background:rgba(45,32,78,.6);border:1px solid var(--ragga-soft);color:var(--lilac);
-  border-radius:999px;padding:7px 15px;font-family:var(--body);font-size:12.5px;font-weight:700;
-  cursor:pointer;transition:all .18s;
-}
-.chip.on{background:var(--abraco);border-color:var(--abraco);color:var(--ink)}
-.chip:focus-visible{outline:2px solid var(--abraco);outline-offset:2px}
-.f-sep{width:1px;background:var(--ragga-soft);margin:2px 4px}
-#contagem{font-size:12.5px;color:var(--lilac);margin:12px 2px 4px}
-#listaCom{display:flex;flex-direction:column;gap:12px;margin-top:10px}
-.com-card{border:1px solid var(--ragga-soft);border-radius:14px;padding:15px 18px;background:linear-gradient(160deg, rgba(61,46,102,.4), rgba(45,32,78,.65))}
-.com-card.critico{border-color:rgba(255,123,147,.4)}
-.com-top{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-bottom:8px;font-size:12.5px;color:var(--lilac)}
-.com-top .cloja{font-weight:700;color:var(--cream)}
-.com-nota{font-weight:800;border-radius:999px;padding:2px 11px;font-size:12px}
-.com-nota.b5,.com-nota.b4{background:rgba(110,231,183,.15);color:var(--ok)}
-.com-nota.b3{background:rgba(255,196,107,.16);color:var(--warn)}
-.com-nota.b1,.com-nota.b2{background:rgba(255,123,147,.16);color:var(--bad)}
-.com-txt{font-size:14px;line-height:1.55;color:var(--cream)}
-.vazio{border:1px dashed var(--ragga-soft);border-radius:14px;padding:26px;text-align:center;color:var(--lilac);font-size:13.5px}
+.tema .t-top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}.tema .t-nome{font-weight:700;font-size:14px}.tema .t-qtd{font-size:11.5px;font-weight:700;color:var(--lilac);white-space:nowrap}
+.tema .t-desc{font-size:12.8px;color:var(--lilac);margin-top:5px;line-height:1.45}.tema .t-desc em{color:var(--cream);font-style:italic}
+.tema.crit{border-color:rgba(255,123,147,.35);background:rgba(255,123,147,.05)}.tema.crit .t-qtd{color:var(--bad)}
+.tema.alerta{border-color:rgba(255,196,107,.4);background:rgba(255,196,107,.06)}.tema.alerta .t-qtd{color:var(--warn)}
+.filtros{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;align-items:center}.filtros .f-lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac);margin-right:4px;min-width:64px}
+.chip{background:rgba(45,32,78,.6);border:1px solid var(--ragga-soft);color:var(--lilac);border-radius:999px;padding:7px 15px;font-family:var(--body);font-size:12.5px;font-weight:700;cursor:pointer;transition:all .18s}.chip.on{background:var(--abraco);border-color:var(--abraco);color:var(--ink)}
+#contagem{font-size:12.5px;color:var(--lilac);margin:12px 2px 4px}#listaCom{display:flex;flex-direction:column;gap:12px;margin-top:10px}
+.com-card{border:1px solid var(--ragga-soft);border-radius:14px;padding:15px 18px;background:linear-gradient(160deg, rgba(61,46,102,.4), rgba(45,32,78,.65))}.com-card.critico{border-color:rgba(255,123,147,.4)}
+.com-top{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-bottom:8px;font-size:12.5px;color:var(--lilac)}.com-top .cloja{font-weight:700;color:var(--cream)}
+.com-nota{font-weight:800;border-radius:999px;padding:2px 11px;font-size:12px}.com-nota.b5,.com-nota.b4{background:rgba(110,231,183,.15);color:var(--ok)}.com-nota.b3{background:rgba(255,196,107,.16);color:var(--warn)}.com-nota.b1,.com-nota.b2{background:rgba(255,123,147,.16);color:var(--bad)}
+.com-txt{font-size:14px;line-height:1.55;color:var(--cream)}.vazio{border:1px dashed var(--ragga-soft);border-radius:14px;padding:26px;text-align:center;color:var(--lilac);font-size:13.5px}
 .p-nota-met{margin-top:34px;padding-top:18px;border-top:1px solid var(--ragga-soft);color:var(--lilac);font-size:11.8px;line-height:1.6}
-@media (max-width:860px){
-  .p-stats{grid-template-columns:repeat(2,1fr)}
-  .duo-aval{grid-template-columns:1fr}
-  .tg-row{grid-template-columns:118px 1fr 40px}
-  #btnAval span.lbl{display:none}
-  #btnAval{padding:10px 14px}
-}
-
-/* ---------- responsivo ---------- */
-@media (max-width:860px){
-  .kpis{grid-template-columns:repeat(2,1fr)}
-  .duo,.pdca,.criterios{grid-template-columns:1fr}
-  .nota-row{grid-template-columns:1fr;gap:8px}
-  .nota-row:first-child .trilho{margin-top:14px}
-  .nota-row .valores{justify-content:flex-start}
-  .nota-row .aux{text-align:left}
-  .mb-row{grid-template-columns:90px 1fr 100px}
-  table{font-size:12.5px}
-  th,td{padding:8px 8px}
-  .tbl-scroll{overflow-x:auto}
-  .tbl-scroll table{min-width:640px}
-}
-@media (prefers-reduced-motion:reduce){
-  *{transition:none!important;animation:none!important}
-}
-/* ---------- impressão ---------- */
-@media print{
-  body{overflow:visible;background:var(--ink)}
-  #nav,#progress,.hint,#painel,#btnAval,.cta-aval{display:none}
-  #deck{height:auto}
-  .slide{position:relative;opacity:1;visibility:visible;transform:none;page-break-after:always;min-height:100vh;overflow:visible}
-}
+@media (max-width:900px){.p-stats{grid-template-columns:repeat(2,1fr)}.duo-aval{grid-template-columns:1fr}#btnAval span.lbl{display:none}#btnAval{padding:10px 14px}}
 </style>
 </head>
 <body>
 <div id="progress"></div>
 <main id="deck">
-
-<!-- 1 · CAPA -->
 <section class="slide active" id="s1">
-  <div class="eyebrow">Grupo Ragga · PDCA Semanal · Reunião de 31/08/2026</div>
+  <div class="eyebrow">Grupo Ragga · Fechamento Mensal · Apresentado em 01/09/2026</div>
   <div class="titulo-area">
     <h1>Dell'iris</h1>
     <div class="marca">Comida Que Abraça — dark kitchens</div>
-    <p class="sub" style="margin-top:18px">Qualidade de Operação · iFood<br><b style="color:var(--cream)">Semana 24–30/08</b> comparada a 17–23/08</p>
+    <p class="sub" style="margin-top:18px">Qualidade de Operação · iFood<br><b style="color:var(--cream)">Agosto 2026</b> — quatro semanas, semana a semana</p>
     <div class="cover-meta">
-      <span class="pill"><b>4</b> unidades ativas</span>
-      <span class="pill"><b>1.115</b> pedidos na semana</span>
-      <span class="pill">nota da rede <b>4,84</b></span>
-      <span class="pill">cancelamento <b>0,63%</b></span>
+      <span class="pill"><b>4</b> unidades</span>
+      <span class="pill"><b>3.275</b> pedidos iFood no mês</span>
+      <span class="pill">nota do mês <b>4,86</b></span>
+      <span class="pill">cancelamento <b>0,55%</b></span>
+      <span class="pill">semana 1 → 4: <b>2,3×</b> pedidos</span>
     </div>
   </div>
   <div class="rodape-capa">
@@ -342,203 +126,574 @@ tr td:first-child{font-weight:700}
     <span class="hint">navegue com <kbd>←</kbd> <kbd>→</kbd> ou deslize</span>
   </div>
 </section>
-
-<!-- 2 · LEITURA DA SEMANA -->
 <section class="slide" id="s2">
-  <div class="eyebrow">Leitura da semana</div>
-  <h2>O crescimento acomodou — e a rede <em style="color:var(--abraco);font-style:normal">aprendeu a responder</em></h2>
-  <p class="sub">Todos os deltas comparam 24–30/08 com 17–23/08. Quinta semana seguida de alta, agora em ritmo de acomodação após o salto de +66%.</p>
+  <div class="eyebrow">O mês em números</div>
+  <h2>Agosto: o mês em que a Dell'iris virou operação de escala</h2>
+  <p class="sub">Consolidado das 4 semanas iFood de agosto (03–30/08). Entre parênteses, a trajetória da 1ª para a 4ª semana.</p>
   <div class="grid kpis">
-    <div class="card"><div class="lbl">Pedidos</div><div class="val num">1.115</div><span class="delta up">▲ +6,3%</span><div class="foot">1.049 na semana anterior · 5ª alta seguida, em patamar novo</div></div>
-    <div class="card"><div class="lbl">Nota média da rede</div><div class="val num">4,84 <small>/ 5</small></div><span class="delta down">▼ −0,08 vs 4,92</span><div class="foot">114 avaliações · as 4 unidades seguem ≥ 4,7</div></div>
-    <div class="card"><div class="lbl">Cancelamentos (super)</div><div class="val num">0,63%</div><span class="delta down">▼ era 0,57%</span><div class="foot">7 pedidos · R$ 470,04 · Aeroporto e Centro acima de 1%</div></div>
-    <div class="card"><div class="lbl">Chamados (negociações)</div><div class="val num">6 <small>· 0,54%</small></div><span class="delta up">▲ respostas dispararam</span><div class="foot">Gleba 86% · Aeroporto 93% · Centro e Saul 75% (eram 50–90%)</div></div>
-    <div class="card"><div class="lbl">Pedidos atrasados 5min+</div><div class="val num">6,5%</div><span class="delta down">▼ era 5,9%</span><div class="foot">72 pedidos · o Aeroporto concentra 45 deles (12,2%)</div></div>
-    <div class="card"><div class="lbl">Tempo online vs planejado</div><div class="val num">99,7%</div><span class="delta flat">● estável</span><div class="foot">todas as unidades ≥ 99%</div></div>
+    <div class="card"><div class="lbl">Pedidos</div><div class="val num">3.275</div><span class="delta up">▲ 480 → 1.115 por semana</span><div class="foot">2,3× em quatro semanas · 4 altas seguidas</div></div>
+    <div class="card"><div class="lbl">Nota média do mês</div><div class="val num">4,86 <small>/ 5</small></div><span class="delta up">▲ 4,90 · 4,77 · 4,92 · 4,84</span><div class="foot">354 avaliações · rede sempre ≥ 4,7 · Centro 5,00 nas 4 semanas</div></div>
+    <div class="card"><div class="lbl">Cancelamentos (super)</div><div class="val num">0,55%</div><span class="delta flat">● 0,21 → 0,63%</span><div class="foot">18 pedidos · R$ 1.285,84 cancelados no mês</div></div>
+    <div class="card"><div class="lbl">Chamados (negociações)</div><div class="val num">14 <small>· 0,43%</small></div><span class="delta up">▲ respostas 50% → 75–93%</span><div class="foot">a rotina de resposta virou o jogo na 4ª semana</div></div>
+    <div class="card"><div class="lbl">Pedidos atrasados 5min+</div><div class="val num">5,2%</div><span class="delta down">▼ 4,6 → 6,5%</span><div class="foot">170 pedidos · pressão do volume na ponta da entrega</div></div>
+    <div class="card"><div class="lbl">Espera do entregador 5min+</div><div class="val num">55,4%</div><span class="delta up">▲ 64,8 → 48,7%</span><div class="foot">caiu 16 pontos no mês · melhor marca na última semana</div></div>
   </div>
-  <div class="leitura"><b>Síntese:</b> o volume acomodou em patamar alto e a rotina de resposta a chamados pegou — salto geral nas taxas. A pressão agora tem endereço: o <b>Aeroporto</b>, que quase quadruplicou no mês, bateu no teto (atrasos 12,2%, cancelamento acima da régua, R$ 129,64 só de "item errado"). E um fio qualitativo esticou: <b>"impróprio para consumo" apareceu em três unidades</b> — pauta de segurança alimentar para hoje.</div>
+  <div class="leitura"><b>Síntese do mês:</b> a rede mais que dobrou o volume semanal sem perder a nota — 4,86 no mês, sempre acima da régua Super — enquanto aprendeu a responder chamados e reduziu a espera do entregador em 16 pontos. O custo do crescimento apareceu em dois lugares: <b>atrasos</b> (5,2% no mês, 6,5% na última semana) e <b>expedição</b> — "item errado" e "parte não enviada" somam 52% do valor cancelado.</div>
 </section>
-
-<!-- 3 · AVALIAÇÕES -->
 <section class="slide" id="s3">
-  <div class="eyebrow">Pilar 01 · Avaliações</div>
-  <h2>Nota acomodou em 4,84 — as 4 unidades seguem no verde</h2>
-  <p class="sub">Nota média no iFood na semana 24–30/08, com a variação vs semana anterior. A linha marca 4,7 — referência de nota do programa Super Restaurante.</p>
-  <div class="notas">
-    <div class="nota-row">
-      <div class="loja">Centro<span>8 avaliações · 4ª semana no teto</span></div>
-      <div class="trilho"><div class="fill" data-w="100"></div><div class="meta47"></div></div>
-      <div class="valores"><span class="nota num">5,00</span><span class="aux">era 5,00<br><b style="color:var(--ok)">● manteve</b></span></div>
-    </div>
-    <div class="nota-row">
-      <div class="loja">Aeroporto<span>40 avaliações</span></div>
-      <div class="trilho"><div class="fill" data-w="97"></div><div class="meta47"></div></div>
-      <div class="valores"><span class="nota num">4,85</span><span class="aux">era 4,94<br><b style="color:var(--lilac)">▼ −0,09</b></span></div>
-    </div>
-    <div class="nota-row">
-      <div class="loja">Gleba Palhano<span>47 avaliações — recorde da unidade</span></div>
-      <div class="trilho"><div class="fill" data-w="96.6"></div><div class="meta47"></div></div>
-      <div class="valores"><span class="nota num">4,83</span><span class="aux">era 4,87<br><b style="color:var(--lilac)">▼ −0,04</b></span></div>
-    </div>
-    <div class="nota-row">
-      <div class="loja">Saul Elkind <span class="tag ok" style="margin-left:4px">≥ 4,7 ✓</span><span>19 avaliações</span></div>
-      <div class="trilho"><div class="fill" data-w="95.8"></div><div class="meta47"></div></div>
-      <div class="valores"><span class="nota num">4,79</span><span class="aux">era 4,92<br><b style="color:var(--lilac)">▼ −0,13</b></span></div>
-    </div>
-  </div>
-  <div class="leitura"><b>O extrato de comentários fechou a leitura:</b> a queda leve da Gleba <b>tem tema</b> — quantidade ("pouca comida pelo preço") e um caso de sal, ambos em 24/08 — e a do Saul é dispersão, sem crítica escrita. Semana sem nenhuma nota 1 nas 137 publicadas (primeira da série), mas o tema <b>quantidade/porcionamento reapareceu</b> em 3 relatos: detalhe no painel.</div>
-  <button class="cta-aval" data-abrir-painel>★ Explorar avaliações em detalhe — síntese e comentários</button>
-</section>
-
-<!-- 4 · CANCELAMENTOS -->
-<section class="slide" id="s4">
-  <div class="eyebrow">Pilar 02 · Cancelamentos</div>
-  <h2>0,63% na rede — duas unidades acima da régua</h2>
-  <p class="sub">Cancelamentos que contam para o programa Super, valor total cancelado e o principal motivo por unidade, na semana 24–30/08.</p>
-  <div class="tbl-scroll">
-  <table>
-    <thead><tr><th>Unidade</th><th class="num">Pedidos</th><th class="num">Cancel. super</th><th class="num">% da semana</th><th class="num">% anterior</th><th class="num">Valor cancelado</th><th>Principal motivo</th></tr></thead>
-    <tbody>
-      <tr><td>Gleba Palhano</td><td class="num">411</td><td class="num">1</td><td class="num">0,24%</td><td class="num">0,48%</td><td class="num">R$ 159,13</td><td><span class="tag warn">tempo de entrega · R$ 61,17</span></td></tr>
-      <tr><td>Aeroporto</td><td class="num">370</td><td class="num">4</td><td class="num">1,08%</td><td class="num">0,97%</td><td class="num">R$ 225,57</td><td><span class="tag bad">acima da régua ≤ 1%</span></td></tr>
-      <tr><td>Centro</td><td class="num">140</td><td class="num">2</td><td class="num">1,43%</td><td class="num">0,00%</td><td class="num">R$ 64,36</td><td><span class="tag bad">acima da régua ≤ 1%</span></td></tr>
-      <tr><td>Saul Elkind</td><td class="num">194</td><td class="num">0</td><td class="num">0,00%</td><td class="num">0,45%</td><td class="num">R$ 20,98</td><td><span class="tag ok">zerou no super</span></td></tr>
-      <tr style="border-top:2px solid var(--ragga-soft)"><td>Rede</td><td class="num">1.115</td><td class="num">7</td><td class="num"><b>0,63%</b></td><td class="num">0,57%</td><td class="num"><b>R$ 470,04</b></td><td><span class="tag ok">dentro da régua ≤ 1%</span></td></tr>
-    </tbody>
-  </table>
-  </div>
-  <div class="leitura"><b>Dois movimentos na perda:</b> "item errado" voltou a puxar — <b class="num">R$ 210,61 (45%)</b>, com o Aeroporto respondendo por R$ 129,64 sozinho — e o alerta que subiu de nível: <b>"impróprio para consumo" apareceu em três unidades</b> (Gleba R$ 21,99, pela 2ª semana seguida; Saul R$ 20,98; e R$ 37,97 em chamado do Aeroporto — ≈ R$ 81 no total). É pauta de segurança alimentar: inspeção de frescor e validade na expedição. O almoço segue o momento frágil (9 dos 15 cancelamentos brutos entre 10h–14h) e o sábado do Aeroporto concentrou 3.</div>
-</section>
-
-<!-- 5 · CHAMADOS -->
-<section class="slide" id="s5">
-  <div class="eyebrow">Pilar 03 · Chamados (negociações iFood)</div>
-  <h2>Respostas dispararam — falta o último degrau</h2>
-  <p class="sub">Negociações são os chamados abertos pelo cliente no iFood (pedido com problema). A taxa de resposta segue a janela do relatório iFood e é critério direto do programa Super — a régua da rede é 100%.</p>
-  <div class="tbl-scroll">
-  <table>
-    <thead><tr><th>Unidade</th><th class="num">Chamados</th><th class="num">% dos pedidos</th><th class="num">Taxa de resposta</th><th>Situação</th></tr></thead>
-    <tbody>
-      <tr><td>Gleba Palhano</td><td class="num">1</td><td class="num">0,24%</td><td class="num">86%</td><td><span class="tag warn">subiu de 50%</span></td></tr>
-      <tr><td>Aeroporto</td><td class="num">4</td><td class="num">1,08%</td><td class="num">93%</td><td><span class="tag warn">volume alto · quase na meta</span></td></tr>
-      <tr><td>Centro</td><td class="num">1</td><td class="num">0,71%</td><td class="num">75%</td><td><span class="tag warn">subiu de 50%</span></td></tr>
-      <tr><td>Saul Elkind</td><td class="num">0</td><td class="num">0,00%</td><td class="num">75%</td><td><span class="tag warn">subiu de 50%</span></td></tr>
-      <tr style="border-top:2px solid var(--ragga-soft)"><td>Rede</td><td class="num">6</td><td class="num"><b>0,54%</b></td><td class="num">—</td><td><span class="tag ok">meta: 100% em até 1h</span></td></tr>
-    </tbody>
-  </table>
-  </div>
-  <div class="leitura"><b>A rotina pegou:</b> uma semana depois da proposta do dono de chamados por turno, todas as taxas subiram — Gleba de 50% para 86%, Centro e Saul de 50% para 75%, Aeroporto em 93%. O degrau final é 100% — e o Aeroporto merece atenção dupla: 4 chamados na semana (o maior volume da rede), casados com o pico de atrasos.</div>
-</section>
-
-<!-- 6 · OPERAÇÃO -->
-<section class="slide" id="s6">
-  <div class="eyebrow">Pilar 04 · Operação</div>
-  <h2>Espera do entregador na melhor marca; Aeroporto bateu no teto</h2>
+  <div class="eyebrow">Pilar 00 · Volume</div>
+  <h2>De 480 a 1.115 pedidos por semana em um mês</h2>
   <div class="grid duo">
     <div class="card">
-      <div class="lbl">% de pedidos atrasados 5min+ · por unidade</div>
-      <div class="mini-bars">
-        <div class="mb-row"><span>Gleba</span><div class="mb-track"><div class="mb-fill calm" data-w="39"></div></div><span class="mb-val num">3,9% <small>· era 3,6%</small></span></div>
-        <div class="mb-row"><span>Aeroporto</span><div class="mb-track"><div class="mb-fill bad" data-w="100"></div></div><span class="mb-val num">12,2% <small>· era 6,9%</small></span></div>
-        <div class="mb-row"><span>Centro</span><div class="mb-track"><div class="mb-fill calm" data-w="43"></div></div><span class="mb-val num">4,3% <small>· era 3,8%</small></span></div>
-        <div class="mb-row"><span>Saul Elkind</span><div class="mb-track"><div class="mb-fill calm" data-w="26"></div></div><span class="mb-val num">2,6% <small>· era 9,9%</small></span></div>
-      </div>
-      <div class="lbl" style="margin-top:20px">Tempo médio de preparo (min)</div>
-      <div class="mini-bars">
-        <div class="mb-row"><span>Gleba</span><div class="mb-track"><div class="mb-fill warn" data-w="58"></div></div><span class="mb-val num">17,5 <small>· era 14,0</small></span></div>
-        <div class="mb-row"><span>Aeroporto</span><div class="mb-track"><div class="mb-fill bad" data-w="76"></div></div><span class="mb-val num">22,7 <small>· era 20,5</small></span></div>
-        <div class="mb-row"><span>Centro</span><div class="mb-track"><div class="mb-fill warn" data-w="65"></div></div><span class="mb-val num">19,6 <small>· era 18,3</small></span></div>
-        <div class="mb-row"><span>Saul Elkind</span><div class="mb-track"><div class="mb-fill warn" data-w="63"></div></div><span class="mb-val num">18,9 <small>· era 18,3</small></span></div>
-      </div>
+      <div class="lbl">Pedidos por semana · por unidade</div>
+      <svg viewBox="0 0 640 250" xmlns="http://www.w3.org/2000/svg" class="chart" role="img" aria-label="Pedidos por semana e unidade">
+<rect x="40.8" y="181.1" width="90.5" height="33.4" fill="var(--abraco)" rx="2"/>
+<text x="86.0" y="202.5" text-anchor="middle" fill="var(--ink)" font-size="10.5" font-weight="700">247</text>
+<rect x="40.8" y="163.8" width="90.5" height="15.7" fill="var(--lilac)" rx="2"/>
+<text x="86.0" y="176.5" text-anchor="middle" fill="var(--ink)" font-size="10.5" font-weight="700">122</text>
+<rect x="40.8" y="161.9" width="90.5" height="0.5" fill="var(--ok)" rx="2"/>
+<rect x="40.8" y="148.1" width="90.5" height="12.2" fill="var(--warn)" rx="2"/>
+<text x="86.0" y="140.1" text-anchor="middle" fill="var(--cream)" font-size="15" font-weight="700" font-family="var(--display)">480</text>
+<text x="86.0" y="240" text-anchor="middle" fill="var(--lilac)" font-size="11.5">03–09/08</text>
+<rect x="196.8" y="180.0" width="90.5" height="34.5" fill="var(--abraco)" rx="2"/>
+<text x="242.0" y="202.0" text-anchor="middle" fill="var(--ink)" font-size="10.5" font-weight="700">255</text>
+<rect x="196.8" y="156.8" width="90.5" height="21.7" fill="var(--lilac)" rx="2"/>
+<text x="242.0" y="172.4" text-anchor="middle" fill="var(--ink)" font-size="10.5" font-weight="700">164</text>
+<rect x="196.8" y="147.4" width="90.5" height="7.8" fill="var(--ok)" rx="2"/>
+<rect x="196.8" y="126.8" width="90.5" height="19.1" fill="var(--warn)" rx="2"/>
+<text x="242.0" y="141.1" text-anchor="middle" fill="var(--ink)" font-size="10.5" font-weight="700">146</text>
+<text x="242.0" y="118.8" text-anchor="middle" fill="var(--cream)" font-size="15" font-weight="700" font-family="var(--display)">631</text>
+<text x="242.0" y="240" text-anchor="middle" fill="var(--lilac)" font-size="11.5">10–16/08</text>
+<rect x="352.8" y="157.6" width="90.5" height="56.9" fill="var(--abraco)" rx="2"/>
+<text x="398.0" y="190.8" text-anchor="middle" fill="var(--ink)" font-size="10.5" font-weight="700">413</text>
+<rect x="352.8" y="114.1" width="90.5" height="42.0" fill="var(--lilac)" rx="2"/>
+<text x="398.0" y="139.8" text-anchor="middle" fill="var(--ink)" font-size="10.5" font-weight="700">308</text>
+<rect x="352.8" y="99.2" width="90.5" height="13.3" fill="var(--ok)" rx="2"/>
+<rect x="352.8" y="67.7" width="90.5" height="30.0" fill="var(--warn)" rx="2"/>
+<text x="398.0" y="87.5" text-anchor="middle" fill="var(--ink)" font-size="10.5" font-weight="700">223</text>
+<text x="398.0" y="59.7" text-anchor="middle" fill="var(--cream)" font-size="15" font-weight="700" font-family="var(--display)">1.049</text>
+<text x="398.0" y="240" text-anchor="middle" fill="var(--lilac)" font-size="11.5">17–23/08</text>
+<rect x="508.8" y="157.9" width="90.5" height="56.6" fill="var(--abraco)" rx="2"/>
+<text x="554.0" y="190.9" text-anchor="middle" fill="var(--ink)" font-size="10.5" font-weight="700">411</text>
+<rect x="508.8" y="105.6" width="90.5" height="50.8" fill="var(--lilac)" rx="2"/>
+<text x="554.0" y="135.7" text-anchor="middle" fill="var(--ink)" font-size="10.5" font-weight="700">370</text>
+<rect x="508.8" y="85.8" width="90.5" height="18.3" fill="var(--ok)" rx="2"/>
+<text x="554.0" y="99.7" text-anchor="middle" fill="var(--ink)" font-size="10.5" font-weight="700">140</text>
+<rect x="508.8" y="58.4" width="90.5" height="25.9" fill="var(--warn)" rx="2"/>
+<text x="554.0" y="76.1" text-anchor="middle" fill="var(--ink)" font-size="10.5" font-weight="700">194</text>
+<text x="554.0" y="50.4" text-anchor="middle" fill="var(--cream)" font-size="15" font-weight="700" font-family="var(--display)">1.115</text>
+<text x="554.0" y="240" text-anchor="middle" fill="var(--lilac)" font-size="11.5">24–30/08</text>
+</svg>
+      <div class="legenda"><span><i style="background:var(--abraco)"></i>Gleba Palhano</span><span><i style="background:var(--lilac)"></i>Aeroporto</span><span><i style="background:var(--ok)"></i>Centro</span><span><i style="background:var(--warn)"></i>Saul Elkind</span></div>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px">
-      <div class="card alerta-card">
-        <div class="lbl">Atrasos 5min+ · Aeroporto</div>
-        <div class="val num">12,2%</div>
-        <div class="foot">45 dos 72 atrasos da rede · preparo em <b class="num" style="color:var(--warn)">22,7min</b> · a unidade quase quadruplicou no mês (95 → 370 pedidos/sem) — dimensionar praça, escala e despacho para o novo patamar</div>
-      </div>
-      <div class="card">
-        <div class="lbl">Espera do entregador: melhor marca de novo</div>
-        <div class="foot" style="font-size:13.5px;margin-top:0;color:var(--cream)">Aguardo 5min+ caiu para <b class="num">48,7%</b> (era 53,5%) e 15min+ para <b class="num">19,5%</b> — 2ª queda seguida, mesmo com o volume recorde. O pico segue no Saul Elkind: <b class="num">70%</b>, com 37% aguardando 15min+.</div>
-      </div>
-      <div class="card">
-        <div class="lbl">Tempo online vs planejado</div>
-        <div class="val num">99,7%</div>
-        <div class="foot">Gleba 99,7% · Aeroporto 100% · Centro 99,2% · Saul 99,7%</div>
-      </div>
+      <div class="card"><div class="lbl">Quem puxou o mês</div>
+        <div class="foot" style="font-size:13.5px;margin-top:0;color:var(--cream)"><b>Gleba</b> é o motor estável: 1.326 pedidos (40% do mês). <b>Aeroporto</b> quase triplicou na janela (122 → 370) e virou a 2ª maior. <b>Centro</b> fez a rampagem perfeita: 14 → 140 (10×). <b>Saul</b> dobrou (97 → 194) com uma montanha-russa no meio.</div></div>
+      <div class="card"><div class="lbl">O salto da 3ª semana</div>
+        <div class="foot" style="font-size:13.5px;margin-top:0;color:var(--cream)">+66% em uma única semana (631 → 1.049) — a cozinha absorveu (preparo +1,4min na rede), mas a ponta da entrega sentiu: os atrasos saíram de 2,2% para 5,9% e não voltaram.</div></div>
+      <div class="card"><div class="lbl">Ritmo de fim de mês</div><div class="val num">+6,3%</div><div class="foot">4ª semana vs 3ª · o crescimento acomodou em patamar alto — sinal saudável após o salto</div></div>
     </div>
   </div>
 </section>
-
-<!-- 7 · RUMO AO SUPER -->
+<section class="slide" id="s4">
+  <div class="eyebrow">Canal próprio · Pedidos via link digital</div>
+  <h2>Link digital: 46 pedidos e R$ 2.514,74 em agosto — o canal que nasce</h2>
+  <p class="sub">Pedidos recebidos pelo link digital da Dell'iris em agosto, por unidade — fora do marketplace iFood. Primeiro mês de medição: é a linha de base para setembro.</p>
+  <div class="grid kpis">
+    <div class="card"><div class="lbl">Pedidos via link</div><div class="val num">46</div><div class="foot">nas 4 unidades · agosto</div></div>
+    <div class="card"><div class="lbl">Faturamento via link</div><div class="val num">R$ 2.514,74</div><div class="foot">ticket médio de R$ 54,67 por pedido</div></div>
+    <div class="card"><div class="lbl">Peso no volume total</div><div class="val num">1,4%</div><div class="foot">46 de 3.321 pedidos (iFood + link)</div></div>
+  </div>
+  <div class="grid duo" style="margin-top:14px">
+    <div class="card">
+      <div class="lbl">Por unidade</div>
+      <div class="tbl-scroll"><table style="margin-top:8px">
+        <thead><tr><th>Unidade</th><th class="num">Pedidos</th><th class="num">Faturamento</th><th class="num">Ticket médio</th><th class="num">% do volume da unidade</th></tr></thead>
+        <tbody>
+          <tr><td>Gleba Palhano</td><td class="num">15</td><td class="num">R$ 723,74</td><td class="num">R$ 48,25</td><td class="num"><span class="tag mut">1,1%</span></td></tr>
+<tr><td>Aeroporto</td><td class="num">14</td><td class="num">R$ 658,75</td><td class="num">R$ 47,05</td><td class="num"><span class="tag mut">1,4%</span></td></tr>
+<tr><td>Centro</td><td class="num">11</td><td class="num">R$ 656,29</td><td class="num">R$ 59,66</td><td class="num"><span class="tag ok">3,3%</span></td></tr>
+<tr><td>Saul Elkind</td><td class="num">6</td><td class="num">R$ 475,96</td><td class="num">R$ 79,33</td><td class="num"><span class="tag mut">0,9%</span></td></tr>
+          <tr style="border-top:2px solid var(--ragga-soft)"><td>Rede</td><td class="num">46</td><td class="num"><b>R$ 2.514,74</b></td><td class="num">R$ 54,67</td><td class="num"><b>1,4%</b></td></tr>
+        </tbody></table></div>
+      <div class="foot" style="margin-top:10px">% do volume = pedidos via link ÷ (pedidos iFood + link) da unidade em agosto.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card"><div class="lbl">Faturamento via link · R$</div><div class="mini-bars" style="margin-top:12px"><div class="mb-row"><span>Gleba Palhano</span><div class="mb-track"><div class="mb-fill calm" data-w="100"></div></div><span class="mb-val num">R$ 723,74</span></div>
+<div class="mb-row"><span>Aeroporto</span><div class="mb-track"><div class="mb-fill calm" data-w="91"></div></div><span class="mb-val num">R$ 658,75</span></div>
+<div class="mb-row"><span>Centro</span><div class="mb-track"><div class="mb-fill calm" data-w="91"></div></div><span class="mb-val num">R$ 656,29</span></div>
+<div class="mb-row"><span>Saul Elkind</span><div class="mb-track"><div class="mb-fill calm" data-w="66"></div></div><span class="mb-val num">R$ 475,96</span></div></div></div>
+      <div class="card"><div class="lbl">Pedidos via link</div><div class="mini-bars" style="margin-top:12px"><div class="mb-row"><span>Gleba Palhano</span><div class="mb-track"><div class="mb-fill warn" data-w="100"></div></div><span class="mb-val num">15 pedidos</span></div>
+<div class="mb-row"><span>Aeroporto</span><div class="mb-track"><div class="mb-fill warn" data-w="93"></div></div><span class="mb-val num">14 pedidos</span></div>
+<div class="mb-row"><span>Centro</span><div class="mb-track"><div class="mb-fill warn" data-w="73"></div></div><span class="mb-val num">11 pedidos</span></div>
+<div class="mb-row"><span>Saul Elkind</span><div class="mb-track"><div class="mb-fill warn" data-w="40"></div></div><span class="mb-val num">6 pedidos</span></div></div></div>
+    </div>
+  </div>
+  <div class="leitura"><b>Leitura:</b> o canal próprio ainda é pequeno — 1,4% do volume — mas já tem perfil: o <b>Centro</b> tem a maior penetração relativa (3,3% dos pedidos da unidade vêm pelo link, mais que o dobro das outras), e o <b>Saul Elkind</b> tem o maior ticket (R$ 79,33, contra R$ 47–60 nas demais). Gleba e Aeroporto lideram em pedidos, mas com penetração de 1,1% e 1,4%. Para setembro, a pergunta é o que o Centro faz de diferente na divulgação — e se dá para replicar.</div>
+</section>
+<section class="slide" id="s5">
+  <div class="eyebrow">Pilar 01 · Avaliações</div>
+  <h2>Nota sempre acima da régua — com uma queda e uma recuperação no meio</h2>
+  <div class="grid duo">
+    <div class="card">
+      <div class="lbl">Nota média por semana · unidades e rede</div>
+      <svg viewBox="0 0 640 230" xmlns="http://www.w3.org/2000/svg" class="chart" role="img" aria-label="Nota por semana">
+<line x1="44" y1="14.0" x2="578" y2="14.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="74.7" x2="578" y2="74.7" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="135.3" x2="578" y2="135.3" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="196.0" x2="578" y2="196.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="109.2" x2="578" y2="109.2" stroke="var(--cream)" stroke-dasharray="4 4" opacity=".5"/>
+<text x="584" y="113.2" fill="var(--lilac)" font-size="11">régua 4,7</text>
+<text x="44.0" y="220" text-anchor="middle" fill="var(--lilac)" font-size="11.5">03–09/08</text>
+<text x="222.0" y="220" text-anchor="middle" fill="var(--lilac)" font-size="11.5">10–16/08</text>
+<text x="400.0" y="220" text-anchor="middle" fill="var(--lilac)" font-size="11.5">17–23/08</text>
+<text x="578.0" y="220" text-anchor="middle" fill="var(--lilac)" font-size="11.5">24–30/08</text>
+<path d="M44.0,64.9 L222.0,60.2 L400.0,69.5 L578.0,78.9" fill="none" stroke="var(--abraco)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="64.9" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="60.2" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="69.5" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="78.9" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="82.9" fill="var(--abraco)" font-size="12" font-weight="700">4,83</text>
+<path d="M44.0,39.2 L222.0,39.2 L400.0,53.2 L578.0,74.2" fill="none" stroke="var(--lilac)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="39.2" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="39.2" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="53.2" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="74.2" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="78.2" fill="var(--lilac)" font-size="12" font-weight="700">4,85</text>
+<path d="M44.0,39.2 L222.0,39.2 L400.0,39.2 L578.0,39.2" fill="none" stroke="var(--ok)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="39.2" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="39.2" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="39.2" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="39.2" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="43.2" fill="var(--ok)" font-size="12" font-weight="700">5,00</text>
+<path d="M44.0,67.2 L222.0,160.5 L400.0,57.9 L578.0,88.2" fill="none" stroke="var(--warn)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="67.2" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="160.5" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="57.9" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="88.2" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="92.2" fill="var(--warn)" font-size="12" font-weight="700">4,79</text>
+<path d="M44.0,62.5 L222.0,92.9 L400.0,57.9 L578.0,76.5" fill="none" stroke="var(--cream)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="62.5" r="4" fill="var(--cream)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="92.9" r="4" fill="var(--cream)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="57.9" r="4" fill="var(--cream)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="76.5" r="4" fill="var(--cream)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="80.5" fill="var(--cream)" font-size="12" font-weight="700">4,84</text>
+</svg>
+      <div class="legenda"><span><i style="background:var(--abraco)"></i>Gleba Palhano</span><span><i style="background:var(--lilac)"></i>Aeroporto</span><span><i style="background:var(--ok)"></i>Centro</span><span><i style="background:var(--warn)"></i>Saul Elkind</span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card"><div class="lbl">Notas do mês por unidade</div>
+        <div class="foot" style="font-size:13.5px;margin-top:0;color:var(--cream)"><b>Centro 5,00</b> (37 avaliações, 4 semanas no teto) · <b>Aeroporto 4,91</b> (92) · <b>Gleba 4,87</b> (135, maior volume) · <b>Saul 4,74</b> (90) — as quatro acima de 4,7 no acumulado.</div></div>
+      <div class="card alerta-card"><div class="lbl">O caso Saul Elkind</div>
+        <div class="foot" style="font-size:13.5px;margin-top:0;color:var(--cream)">Caiu para <b class="num">4,48</b> na 2ª semana — comida fria/gelada e tomate azedo, diagnosticados nos comentários — e voltou a <b class="num">4,92</b> na 3ª após o ajuste de regeneração e validação de salada. Um ciclo PDCA completo em 14 dias.</div></div>
+      <div class="card"><div class="lbl">Volume de avaliações</div><div class="val num">354</div><div class="foot">52 → 73 → 115 → 114 por semana · cresceu junto com os pedidos</div></div>
+    </div>
+  </div>
+</section>
+<section class="slide" id="s6">
+  <div class="eyebrow">Pilar 02 · Cancelamentos</div>
+  <h2>0,55% no mês — dentro da régua, com duas unidades para segurar</h2>
+  <div class="grid duo">
+    <div class="card">
+      <div class="lbl">% de cancelamentos super por semana</div>
+      <svg viewBox="0 0 640 230" xmlns="http://www.w3.org/2000/svg" class="chart" role="img" aria-label="% cancelamento super por semana">
+<line x1="44" y1="14.0" x2="578" y2="14.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="74.7" x2="578" y2="74.7" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="135.3" x2="578" y2="135.3" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="196.0" x2="578" y2="196.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="135.5" x2="578" y2="135.5" stroke="var(--cream)" stroke-dasharray="4 4" opacity=".5"/>
+<text x="584" y="139.5" fill="var(--lilac)" font-size="11">régua 1%</text>
+<text x="44.0" y="220" text-anchor="middle" fill="var(--lilac)" font-size="11.5">03–09/08</text>
+<text x="222.0" y="220" text-anchor="middle" fill="var(--lilac)" font-size="11.5">10–16/08</text>
+<text x="400.0" y="220" text-anchor="middle" fill="var(--lilac)" font-size="11.5">17–23/08</text>
+<text x="578.0" y="220" text-anchor="middle" fill="var(--lilac)" font-size="11.5">24–30/08</text>
+<path d="M44.0,161.7 L222.0,145.1 L400.0,158.2 L578.0,168.7" fill="none" stroke="var(--abraco)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="161.7" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="145.1" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="158.2" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="168.7" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="172.7" fill="var(--abraco)" font-size="12" font-weight="700">0,24%</text>
+<path d="M44.0,179.2 L222.0,179.2 L400.0,136.8 L578.0,131.9" fill="none" stroke="var(--lilac)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="179.2" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="179.2" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="136.8" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="131.9" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="135.9" fill="var(--lilac)" font-size="12" font-weight="700">1,08%</text>
+<path d="M44.0,179.2 L222.0,46.6 L400.0,179.2 L578.0,116.6" fill="none" stroke="var(--ok)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="179.2" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="46.6" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="179.2" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="116.6" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="120.6" fill="var(--ok)" font-size="12" font-weight="700">1,43%</text>
+<path d="M44.0,179.2 L222.0,179.2 L400.0,159.5 L578.0,179.2" fill="none" stroke="var(--warn)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="179.2" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="179.2" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="159.5" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="179.2" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="183.2" fill="var(--warn)" font-size="12" font-weight="700">0,00%</text>
+<path d="M44.0,170.0 L222.0,151.6 L400.0,154.3 L578.0,151.6" fill="none" stroke="var(--cream)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="170.0" r="4" fill="var(--cream)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="151.6" r="4" fill="var(--cream)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="154.3" r="4" fill="var(--cream)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="151.6" r="4" fill="var(--cream)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="155.6" fill="var(--cream)" font-size="12" font-weight="700">0,63%</text>
+</svg>
+      <div class="legenda"><span><i style="background:var(--abraco)"></i>Gleba Palhano</span><span><i style="background:var(--lilac)"></i>Aeroporto</span><span><i style="background:var(--ok)"></i>Centro</span><span><i style="background:var(--warn)"></i>Saul Elkind</span></div>
+    </div>
+    <div class="card">
+      <div class="lbl">Acumulado do mês por unidade</div>
+      <div class="tbl-scroll"><table style="margin-top:8px">
+        <thead><tr><th>Unidade</th><th class="num">Pedidos</th><th class="num">Cancel.</th><th class="num">%</th><th class="num">Valor</th></tr></thead>
+        <tbody>
+          <tr><td>Gleba Palhano</td><td class="num">1.326</td><td class="num">6</td><td class="num">0,45%</td><td class="num">R$ 559,42</td></tr>
+          <tr><td>Aeroporto</td><td class="num">964</td><td class="num">7</td><td class="num">0,73%</td><td class="num">R$ 490,26</td></tr>
+          <tr><td>Centro</td><td class="num">325</td><td class="num">4</td><td class="num"><span class="tag bad">1,23%</span></td><td class="num">R$ 99,02</td></tr>
+          <tr><td>Saul Elkind</td><td class="num">660</td><td class="num">1</td><td class="num">0,15%</td><td class="num">R$ 137,14</td></tr>
+          <tr style="border-top:2px solid var(--ragga-soft)"><td>Rede</td><td class="num">3.275</td><td class="num">18</td><td class="num"><b>0,55%</b></td><td class="num"><b>R$ 1.285,84</b></td></tr>
+        </tbody></table></div>
+      <div class="foot" style="margin-top:12px">Centro fecha o mês acima de 1% em base pequena (4 casos em 325); Aeroporto cruzou a régua nas duas últimas semanas (0,97% e 1,08%). Saul, depois do cancelamento de julho, praticamente zerou.</div>
+    </div>
+  </div>
+  <div class="leitura"><b>Leitura:</b> o percentual dobrou do início ao fim do mês (0,21% → 0,63%) acompanhando o volume, mas ficou dentro da régua em todas as semanas no agregado. O valor cancelado (R$ 1.285,84) concentra-se onde o volume é maior — Gleba e Aeroporto somam 82% da perda.</div>
+</section>
 <section class="slide" id="s7">
+  <div class="eyebrow">Pilar 02 · Cancelamentos · loja a loja</div>
+  <h2>Anatomia da perda: escolha a unidade</h2>
+  <p class="sub">48 cancelamentos em agosto no nível do pedido — motivos, dias, turnos, itens e contestações. Clique em uma unidade para ver a leitura dela.</p>
+  <div class="filtros" id="cancSel" style="margin-top:12px">
+    <button class="chip on" data-canc="Rede">Rede</button>
+    <button class="chip" data-canc="Gleba Palhano">Gleba Palhano</button>
+    <button class="chip" data-canc="Aeroporto">Aeroporto</button>
+    <button class="chip" data-canc="Centro">Centro</button>
+    <button class="chip" data-canc="Saul Elkind">Saul Elkind</button>
+  </div>
+  <div class="cn-kpis" id="cn-kpis"></div>
+  <div class="grid tri" style="margin-top:14px">
+    <div class="card"><div class="lbl">Motivos · valor cancelado</div><div class="mini-bars" id="cn-motivos" style="margin-top:12px"></div></div>
+    <div class="card"><div class="lbl">Por dia da semana</div><div class="mini-bars" id="cn-dias" style="margin-top:12px"></div>
+      <div class="lbl" style="margin-top:18px">Itens mais cancelados</div><div class="mini-bars" id="cn-itens" style="margin-top:10px"></div></div>
+    <div class="card"><div class="lbl">Por turno (faixa de 2h)</div><div class="mini-bars" id="cn-turnos" style="margin-top:12px"></div>
+      <div class="lbl" style="margin-top:18px">Origem do cancelamento</div><div class="origem" id="cn-origem"></div></div>
+  </div>
+  <div class="leitura" id="cn-leitura"></div>
+</section>
+<section class="slide" id="s8">
+  <div class="eyebrow">Pilar 03 · Chamados (negociações iFood)</div>
+  <h2>A virada da resposta: de 50% para 75–93% em uma semana</h2>
+  <div class="grid duo">
+    <div class="card">
+      <div class="lbl">Taxa de resposta às negociações · por unidade</div>
+      <svg viewBox="0 0 640 230" xmlns="http://www.w3.org/2000/svg" class="chart" role="img" aria-label="Taxa de resposta às negociações">
+<line x1="44" y1="14.0" x2="578" y2="14.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="74.7" x2="578" y2="74.7" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="135.3" x2="578" y2="135.3" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="196.0" x2="578" y2="196.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="39.2" x2="578" y2="39.2" stroke="var(--cream)" stroke-dasharray="4 4" opacity=".5"/>
+<text x="584" y="43.2" fill="var(--lilac)" font-size="11">meta 100%</text>
+<text x="44.0" y="220" text-anchor="middle" fill="var(--lilac)" font-size="11.5">03–09/08</text>
+<text x="222.0" y="220" text-anchor="middle" fill="var(--lilac)" font-size="11.5">10–16/08</text>
+<text x="400.0" y="220" text-anchor="middle" fill="var(--lilac)" font-size="11.5">17–23/08</text>
+<text x="578.0" y="220" text-anchor="middle" fill="var(--lilac)" font-size="11.5">24–30/08</text>
+<path d="M44.0,39.2 L222.0,89.2 L400.0,139.2 L578.0,67.2" fill="none" stroke="var(--abraco)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="39.2" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="89.2" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="139.2" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="67.2" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="71.2" fill="var(--abraco)" font-size="12" font-weight="700">86%</text>
+<path d="M44.0,39.2 L222.0,39.2 L400.0,59.2 L578.0,53.2" fill="none" stroke="var(--lilac)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="39.2" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="39.2" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="59.2" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="53.2" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="57.2" fill="var(--lilac)" font-size="12" font-weight="700">93%</text>
+<path d="M222.0,173.2 L400.0,139.2 L578.0,89.2" fill="none" stroke="var(--ok)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="222.0" cy="173.2" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="139.2" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="89.2" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="93.2" fill="var(--ok)" font-size="12" font-weight="700">75%</text>
+<path d="M222.0,89.2 L400.0,139.2 L578.0,89.2" fill="none" stroke="var(--warn)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="222.0" cy="89.2" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="139.2" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="89.2" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="93.2" fill="var(--warn)" font-size="12" font-weight="700">75%</text>
+</svg>
+      <div class="legenda"><span><i style="background:var(--abraco)"></i>Gleba Palhano</span><span><i style="background:var(--lilac)"></i>Aeroporto</span><span><i style="background:var(--ok)"></i>Centro</span><span><i style="background:var(--warn)"></i>Saul Elkind</span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card"><div class="lbl">Chamados no mês</div><div class="val num">14 <small>· 0,43%</small></div><div class="foot">1 → 2 → 5 → 6 por semana · Aeroporto 6, Gleba 5, Centro 2, Saul 1</div></div>
+      <div class="card"><div class="lbl">O que aconteceu na 3ª semana</div>
+        <div class="foot" style="font-size:13.5px;margin-top:0;color:var(--cream)">Com o volume de chamados dobrando, três unidades caíram para 50% de resposta. A proposta do PDCA — um dono de chamados por turno, régua de 1h — foi implantada e na semana seguinte todas subiram: Gleba 86%, Aeroporto 93%, Centro e Saul 75%.</div></div>
+      <div class="card"><div class="lbl">Por que importa em dobro</div>
+        <div class="foot" style="font-size:13.5px;margin-top:0;color:var(--cream)">Chamado respondido é cancelamento evitado — o motivo nº 1 do mês ("item errado") é exatamente o caso que a negociação resolve — e é critério direto do Super. O degrau que falta é 100%.</div></div>
+    </div>
+  </div>
+</section>
+<section class="slide" id="s9">
+  <div class="eyebrow">Pilar 04 · Operação</div>
+  <h2>Cozinhas seguraram o ritmo; a ponta da entrega é o desafio de setembro</h2>
+  <div class="grid tri">
+    <div class="card"><div class="lbl">% pedidos atrasados 5min+</div><svg viewBox="0 0 640 210" xmlns="http://www.w3.org/2000/svg" class="chart" role="img" aria-label="% atrasados 5min+">
+<line x1="44" y1="14.0" x2="578" y2="14.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="68.0" x2="578" y2="68.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="122.0" x2="578" y2="122.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="176.0" x2="578" y2="176.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="111.2" x2="578" y2="111.2" stroke="var(--cream)" stroke-dasharray="4 4" opacity=".5"/>
+<text x="584" y="115.2" fill="var(--lilac)" font-size="11">meta 5%</text>
+<text x="44.0" y="200" text-anchor="middle" fill="var(--lilac)" font-size="11.5">03–09/08</text>
+<text x="222.0" y="200" text-anchor="middle" fill="var(--lilac)" font-size="11.5">10–16/08</text>
+<text x="400.0" y="200" text-anchor="middle" fill="var(--lilac)" font-size="11.5">17–23/08</text>
+<text x="578.0" y="200" text-anchor="middle" fill="var(--lilac)" font-size="11.5">24–30/08</text>
+<path d="M44.0,125.2 L222.0,133.1 L400.0,125.2 L578.0,122.2" fill="none" stroke="var(--abraco)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="125.2" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="133.1" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="125.2" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="122.2" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="126.2" fill="var(--abraco)" font-size="12" font-weight="700">3,9%</text>
+<path d="M44.0,120.2 L222.0,137.1 L400.0,92.3 L578.0,39.4" fill="none" stroke="var(--lilac)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="120.2" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="137.1" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="92.3" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="39.4" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="43.4" fill="var(--lilac)" font-size="12" font-weight="700">12,2%</text>
+<path d="M44.0,161.0 L222.0,161.0 L400.0,123.2 L578.0,118.2" fill="none" stroke="var(--ok)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="161.0" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="161.0" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="123.2" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="118.2" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="122.2" fill="var(--ok)" font-size="12" font-weight="700">4,3%</text>
+<path d="M44.0,79.3 L222.0,140.1 L400.0,62.4 L578.0,135.1" fill="none" stroke="var(--warn)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="79.3" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="140.1" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="62.4" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="135.1" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="139.1" fill="var(--warn)" font-size="12" font-weight="700">2,6%</text>
+<path d="M44.0,115.2 L222.0,139.1 L400.0,102.2 L578.0,96.2" fill="none" stroke="var(--cream)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="115.2" r="4" fill="var(--cream)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="139.1" r="4" fill="var(--cream)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="102.2" r="4" fill="var(--cream)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="96.2" r="4" fill="var(--cream)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="100.2" fill="var(--cream)" font-size="12" font-weight="700">6,5%</text>
+</svg>
+      <div class="foot">Rede 5,2% no mês · a partir do salto de volume, os atrasos ficaram acima de 5% — Aeroporto fechou a 4ª semana em 12,2%.</div></div>
+    <div class="card"><div class="lbl">Tempo médio de preparo (min)</div><svg viewBox="0 0 640 210" xmlns="http://www.w3.org/2000/svg" class="chart" role="img" aria-label="Tempo médio de preparo (min)">
+<line x1="44" y1="14.0" x2="578" y2="14.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="68.0" x2="578" y2="68.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="122.0" x2="578" y2="122.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="176.0" x2="578" y2="176.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<text x="44.0" y="200" text-anchor="middle" fill="var(--lilac)" font-size="11.5">03–09/08</text>
+<text x="222.0" y="200" text-anchor="middle" fill="var(--lilac)" font-size="11.5">10–16/08</text>
+<text x="400.0" y="200" text-anchor="middle" fill="var(--lilac)" font-size="11.5">17–23/08</text>
+<text x="578.0" y="200" text-anchor="middle" fill="var(--lilac)" font-size="11.5">24–30/08</text>
+<path d="M44.0,156.6 L222.0,145.9 L400.0,143.2 L578.0,112.1" fill="none" stroke="var(--abraco)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="156.6" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="145.9" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="143.2" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="112.1" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="116.1" fill="var(--abraco)" font-size="12" font-weight="700">17,5</text>
+<path d="M44.0,77.4 L222.0,97.8 L400.0,85.4 L578.0,65.8" fill="none" stroke="var(--lilac)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="77.4" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="97.8" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="85.4" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="65.8" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="69.8" fill="var(--lilac)" font-size="12" font-weight="700">22,7</text>
+<path d="M44.0,114.8 L222.0,128.1 L400.0,105.0 L578.0,93.4" fill="none" stroke="var(--ok)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="114.8" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="128.1" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="105.0" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="93.4" r="4" fill="var(--ok)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="97.4" fill="var(--ok)" font-size="12" font-weight="700">19,6</text>
+<path d="M44.0,38.2 L222.0,105.0 L400.0,81.8 L578.0,99.6" fill="none" stroke="var(--warn)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="38.2" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="105.0" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="81.8" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="99.6" r="4" fill="var(--warn)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="103.6" fill="var(--warn)" font-size="12" font-weight="700">18,9</text>
+<path d="M44.0,111.2 L222.0,121.9 L400.0,109.4 L578.0,92.5" fill="none" stroke="var(--cream)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="111.2" r="4" fill="var(--cream)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="121.9" r="4" fill="var(--cream)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="109.4" r="4" fill="var(--cream)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="92.5" r="4" fill="var(--cream)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="96.5" fill="var(--cream)" font-size="12" font-weight="700">19,7</text>
+</svg>
+      <div class="foot">Rede 18,2min no mês · Gleba é o padrão (14,7) · Saul foi de 25,8 a 18,3 após redimensionar a escala · Aeroporto segue acima de 20.</div></div>
+    <div class="card"><div class="lbl">Espera do entregador · rede</div><svg viewBox="0 0 640 210" xmlns="http://www.w3.org/2000/svg" class="chart" role="img" aria-label="Espera do entregador (rede)">
+<line x1="44" y1="14.0" x2="578" y2="14.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="68.0" x2="578" y2="68.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="122.0" x2="578" y2="122.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="176.0" x2="578" y2="176.0" stroke="var(--ragga-soft)" stroke-width="1" opacity=".7"/>
+<line x1="44" y1="98.7" x2="578" y2="98.7" stroke="var(--cream)" stroke-dasharray="4 4" opacity=".5"/>
+<text x="584" y="102.7" fill="var(--lilac)" font-size="11">meta 40%</text>
+<text x="44.0" y="200" text-anchor="middle" fill="var(--lilac)" font-size="11.5">03–09/08</text>
+<text x="222.0" y="200" text-anchor="middle" fill="var(--lilac)" font-size="11.5">10–16/08</text>
+<text x="400.0" y="200" text-anchor="middle" fill="var(--lilac)" font-size="11.5">17–23/08</text>
+<text x="578.0" y="200" text-anchor="middle" fill="var(--lilac)" font-size="11.5">24–30/08</text>
+<path d="M44.0,47.2 L222.0,50.6 L400.0,70.7 L578.0,80.7" fill="none" stroke="var(--abraco)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="47.2" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="50.6" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="70.7" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="80.7" r="4" fill="var(--abraco)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="84.7" fill="var(--abraco)" font-size="12" font-weight="700">48,7%</text>
+<path d="M44.0,135.1 L222.0,131.1 L400.0,132.8 L578.0,141.3" fill="none" stroke="var(--lilac)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="44.0" cy="135.1" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="222.0" cy="131.1" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="400.0" cy="132.8" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<circle cx="578.0" cy="141.3" r="4" fill="var(--lilac)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="587.0" y="145.3" fill="var(--lilac)" font-size="12" font-weight="700">19,5%</text>
+</svg>
+      <div class="foot">Melhor evolução do mês: 5min+ caiu de 64,8% para 48,7% e 15min+ de 22,5% para 19,5% — mesmo com o volume dobrando. Saul segue o pico (74% no mês).</div></div>
+  </div>
+  <div class="legenda"><span><i style="background:var(--abraco)"></i>Gleba Palhano</span><span><i style="background:var(--lilac)"></i>Aeroporto</span><span><i style="background:var(--ok)"></i>Centro</span><span><i style="background:var(--warn)"></i>Saul Elkind</span></div>
+  <div class="leitura"><b>Leitura:</b> o mês mostra a produção madura — preparo estável e espera do entregador em queda constante — e a <b>última milha</b> como gargalo do próximo mês: atrasos acima de 5% desde a 3ª semana e 37% do valor cancelado em motivos de logística. Tempo online ficou em 99,4% no mês, nunca abaixo de 97% em nenhuma unidade.</div>
+</section>
+<section class="slide" id="s10">
+  <div class="eyebrow">Trajetórias</div>
+  <h2>Quatro unidades, quatro histórias em agosto</h2>
+  <div class="grid pdca" style="margin-top:18px">
+    <div class="card ucard" style="border-top:3px solid var(--abraco)">
+      <div class="t-top"><span class="t-nome">Gleba Palhano</span><span class="tag ok">motor estável</span></div>
+      <div class="ustats num">
+        <div><small>pedidos</small><b>1.326</b></div>
+        <div><small>nota</small><b>4,87</b></div>
+        <div><small>cancel.</small><b>0,45%</b></div>
+        <div><small>atrasos</small><b>3,5%</b></div>
+        <div><small>preparo</small><b>14,7</b></div>
+        <div><small>espera 5+</small><b>51%</b></div>
+      </div>
+      <div class="foot" style="font-size:13px;margin-top:8px;color:var(--cream)">O motor da rede: 40% dos pedidos, preparo mais rápido (14,7min) e nota consistente entre 4,83 e 4,91. Dois fios a fechar: porcionamento (marmita média, "pouca comida pelo preço") e "impróprio para consumo" em duas semanas seguidas. Recorde de avaliações na última semana (47).</div>
+    </div>
+    <div class="card ucard" style="border-top:3px solid var(--lilac)">
+      <div class="t-top"><span class="t-nome">Aeroporto</span><span class="tag bad">bateu no teto</span></div>
+      <div class="ustats num">
+        <div><small>pedidos</small><b>964</b></div>
+        <div><small>nota</small><b>4,91</b></div>
+        <div><small>cancel.</small><b>0,73%</b></div>
+        <div><small>atrasos</small><b>7,8%</b></div>
+        <div><small>preparo</small><b>21,2</b></div>
+        <div><small>espera 5+</small><b>54%</b></div>
+      </div>
+      <div class="foot" style="font-size:13px;margin-top:8px;color:var(--cream)">Quase triplicou em quatro semanas e chegou ao teto: atrasos 12,2% e cancelamento 1,08% na última semana, preparo acima de 20min todo o mês. Nota alta (4,91) e a melhor taxa de resposta (93%). Precisa do mesmo playbook que salvou o Saul: praça, escala e despacho para ~370 pedidos/sem.</div>
+    </div>
+    <div class="card ucard" style="border-top:3px solid var(--ok)">
+      <div class="t-top"><span class="t-nome">Centro</span><span class="tag ok">4× nota 5,00</span></div>
+      <div class="ustats num">
+        <div><small>pedidos</small><b>325</b></div>
+        <div><small>nota</small><b>5,00</b></div>
+        <div><small>cancel.</small><b>1,23%</b></div>
+        <div><small>atrasos</small><b>3,1%</b></div>
+        <div><small>preparo</small><b>18,4</b></div>
+        <div><small>espera 5+</small><b>42%</b></div>
+      </div>
+      <div class="foot" style="font-size:13px;margin-top:8px;color:var(--cream)">Rampagem exemplar: 14 → 140 pedidos, nota 5,00 nas quatro semanas e a menor espera do entregador (42%). Destravou volume e avaliações rumo ao Super. Ponto a corrigir: cancelamento em 1,23% no mês (4 casos de expedição) e resposta a chamados ainda em 75%.</div>
+    </div>
+    <div class="card ucard" style="border-top:3px solid var(--warn)">
+      <div class="t-top"><span class="t-nome">Saul Elkind</span><span class="tag warn">dois ciclos fechados</span></div>
+      <div class="ustats num">
+        <div><small>pedidos</small><b>660</b></div>
+        <div><small>nota</small><b>4,74</b></div>
+        <div><small>cancel.</small><b>0,15%</b></div>
+        <div><small>atrasos</small><b>5,8%</b></div>
+        <div><small>preparo</small><b>20,5</b></div>
+        <div><small>espera 5+</small><b>74%</b></div>
+      </div>
+      <div class="foot" style="font-size:13px;margin-top:8px;color:var(--cream)">Montanha-russa com final feliz: pressão de volume (preparo 25,8min) → redimensionou → queda de nota (4,48, comida fria) → regeneração ajustada → 4,92 → 4,79 estável. Menor cancelamento da rede (0,15%). O fio aberto é estrutural: espera do entregador em 74%, a maior da rede.</div>
+    </div>
+  </div>
+</section>
+<section class="slide" id="s11">
   <div class="eyebrow">Pilar 05 · Rumo ao Super Restaurante</div>
-  <h2>Notas verdes nas 4 — cancelamento vira o critério a segurar</h2>
-  <p class="sub">As 4 unidades seguem <b style="color:var(--cream)">"Não elegível"</b> por falta de histórico: o selo exige 3 meses fechados e, desde 10/05/2026, mínimo de <b style="color:var(--cream)">180 pedidos e 40 avaliações</b> no trimestre, reavaliado todo dia 10. Projeções com 5 semanas de histórico (Centro: 4).</p>
+  <h2>Critérios de produto verdes nas 4 — cancelamento e resposta são o que falta</h2>
+  <p class="sub">Elegibilidade: 3 meses fechados de operação e, desde 10/05/2026, mínimo de 180 pedidos e 40 avaliações no trimestre; selo reavaliado todo dia 10 e exige nível 5 no programa. Abaixo, o acumulado de agosto por unidade contra cada régua.</p>
   <div class="tbl-scroll">
   <table>
     <thead><tr><th>Critério · régua</th><th class="num">Gleba</th><th class="num">Aeroporto</th><th class="num">Centro</th><th class="num">Saul Elkind</th></tr></thead>
     <tbody>
-      <tr><td>Pedidos no trimestre · mín. 180<br><small style="color:var(--lilac)">projeção no ritmo atual</small></td>
-        <td class="num">~4.010 <span class="tag ok">✓</span></td><td class="num">~2.750 <span class="tag ok">✓</span></td><td class="num">~1.060 <span class="tag ok">✓</span></td><td class="num">~1.820 <span class="tag ok">✓</span></td></tr>
-      <tr><td>Avaliações no trimestre · mín. 40<br><small style="color:var(--lilac)">projeção no ritmo atual</small></td>
-        <td class="num">~475 <span class="tag ok">✓</span></td><td class="num">~280 <span class="tag ok">✓</span></td><td class="num">~120 <span class="tag ok">✓</span></td><td class="num">~265 <span class="tag ok">✓</span></td></tr>
-      <tr><td>Nota média · ref. ≥ 4,7</td>
-        <td class="num">4,83 <span class="tag ok">✓</span></td><td class="num">4,85 <span class="tag ok">✓</span></td><td class="num">5,00 <span class="tag ok">✓</span></td><td class="num">4,79 <span class="tag ok">✓</span></td></tr>
-      <tr><td>Cancelamento · ref. ≤ ~1%</td>
-        <td class="num">0,24% <span class="tag ok">✓</span></td><td class="num">1,08% <span class="tag bad">acima</span></td><td class="num">1,43% <span class="tag bad">acima</span></td><td class="num">0,00% <span class="tag ok">✓</span></td></tr>
-      <tr><td>Resposta às negociações · 100%</td>
-        <td class="num">86% <span class="tag warn">subiu</span></td><td class="num">93% <span class="tag warn">subiu</span></td><td class="num">75% <span class="tag warn">subiu</span></td><td class="num">75% <span class="tag warn">subiu</span></td></tr>
+      <tr><td>Pedidos no mês · projeção trimestre mín. 180</td><td class="num">1.326 <span class="tag ok">✓</span></td><td class="num">964 <span class="tag ok">✓</span></td><td class="num">325 <span class="tag ok">✓</span></td><td class="num">660 <span class="tag ok">✓</span></td></tr>
+      <tr><td>Avaliações no mês · projeção trimestre mín. 40</td><td class="num">135 <span class="tag ok">✓</span></td><td class="num">92 <span class="tag ok">✓</span></td><td class="num">37 <span class="tag ok">✓</span></td><td class="num">90 <span class="tag ok">✓</span></td></tr>
+      <tr><td>Nota média do mês · ref. ≥ 4,7</td><td class="num">4,87 <span class="tag ok">✓</span></td><td class="num">4,91 <span class="tag ok">✓</span></td><td class="num">5,00 <span class="tag ok">✓</span></td><td class="num">4,74 <span class="tag warn">✓ na margem</span></td></tr>
+      <tr><td>Cancelamento do mês · ref. ≤ ~1%</td><td class="num">0,45% <span class="tag ok">✓</span></td><td class="num">0,73% <span class="tag warn">subindo</span></td><td class="num">1,23% <span class="tag bad">acima</span></td><td class="num">0,15% <span class="tag ok">✓</span></td></tr>
+      <tr><td>Resposta às negociações · 100% (última semana)</td><td class="num">86% <span class="tag warn">subiu</span></td><td class="num">93% <span class="tag warn">subiu</span></td><td class="num">75% <span class="tag warn">subiu</span></td><td class="num">75% <span class="tag warn">subiu</span></td></tr>
     </tbody>
   </table>
   </div>
-  <div class="leitura"><b>Leitura:</b> notas verdes nas 4 unidades pela 2ª semana e respostas em salto geral — o critério que inverteu foi o <b>cancelamento</b>: Aeroporto (1,08%) e Centro (1,43%) fecharam acima da régua. Volume e avaliações seguem com folga larga em todas; o histórico de 3 meses continua correndo, unidade a unidade.</div>
+  <div class="leitura"><b>Leitura:</b> volume, avaliações e nota já estão em padrão Super nas quatro unidades no acumulado do mês. O que separa a rede do selo é <b>disciplina de expedição</b> (cancelamento do Centro e do Aeroporto) e <b>resposta a 100%</b> — e o histórico de 3 meses fechados, que segue correndo para uma operação iniciada no fim de julho.</div>
+  <button class="cta-aval" data-abrir-painel>★ Explorar avaliações em detalhe — síntese do mês e os 53 comentários</button>
 </section>
-
-<!-- 8 · PDCA -->
-<section class="slide" id="s8">
-  <div class="eyebrow">PDCA · Check da semana</div>
-  <h2>O que a semana ensinou</h2>
-  <div class="grid pdca">
+<section class="slide" id="s12">
+  <div class="eyebrow">Voz do cliente</div>
+  <h2>391 avaliações publicadas em agosto — e nenhuma tag negativa o mês inteiro</h2>
+  <div class="grid tri">
+    <div class="card">
+      <div class="lbl">Distribuição das notas · 391 publicadas</div>
+      <div class="dist" style="margin-top:6px"><div class="dist-row"><span class="est">5 ★</span><div class="dist-track"><div class="dist-fill n5" data-w="90.5"></div></div><span class="dq num">354 <small>· 90,5%</small></span></div>
+<div class="dist-row"><span class="est">4 ★</span><div class="dist-track"><div class="dist-fill n4" data-w="7.2"></div></div><span class="dq num">28 <small>· 7,2%</small></span></div>
+<div class="dist-row"><span class="est">3 ★</span><div class="dist-track"><div class="dist-fill n3" data-w="0.3"></div></div><span class="dq num">1 <small>· 0,3%</small></span></div>
+<div class="dist-row"><span class="est">2 ★</span><div class="dist-track"><div class="dist-fill n2" data-w="1.3"></div></div><span class="dq num">5 <small>· 1,3%</small></span></div>
+<div class="dist-row"><span class="est">1 ★</span><div class="dist-track"><div class="dist-fill n1" data-w="0.8"></div></div><span class="dq num">3 <small>· 0,8%</small></span></div></div>
+      <div class="foot" style="margin-top:12px">Nota média 4,85 · 97,7% em 4–5 · 53 comentários escritos, 9 críticos · tags negativas (incompleto, errado, danificado, mal embalado): <b>0 em 391</b>.</div>
+    </div>
+    <div class="card">
+      <div class="lbl">O que os clientes marcam · % do mês</div>
+      <div class="mini-bars" style="margin-top:14px"><div class="mb-row"><span>Comida saborosa</span><div class="mb-track"><div class="mb-fill calm" data-w="100"></div></div><span class="mb-val num">74%</span></div>
+<div class="mb-row"><span>Bem temperada</span><div class="mb-track"><div class="mb-fill calm" data-w="65"></div></div><span class="mb-val num">48%</span></div>
+<div class="mb-row"><span>Boa aparência</span><div class="mb-track"><div class="mb-fill calm" data-w="55"></div></div><span class="mb-val num">41%</span></div>
+<div class="mb-row"><span>Boa embalagem</span><div class="mb-track"><div class="mb-fill calm" data-w="54"></div></div><span class="mb-val num">40%</span></div>
+<div class="mb-row"><span>Boa quantidade</span><div class="mb-track"><div class="mb-fill calm" data-w="51"></div></div><span class="mb-val num">38%</span></div>
+<div class="mb-row"><span>Bons ingredientes</span><div class="mb-track"><div class="mb-fill calm" data-w="46"></div></div><span class="mb-val num">34%</span></div></div>
+      <div class="foot" style="margin-top:12px">"Bem temperada" subiu de 44% para 55% ao longo do mês; "boa embalagem" de 29% para ~40% — a caixa virou elogio espontâneo.</div>
+    </div>
+    <div class="card">
+      <div class="lbl">Linha do tempo dos temas críticos</div>
+      <div class="timeline">
+        <div><b>03–09/08</b><span>Calmaria pós-abertura: nenhum crítico publicado. Fio herdado de julho: quantidade abaixo do descrito.</span></div>
+        <div><b>10–16/08</b><span><b>Saul:</b> comida fria/gelada (2) e tomate azedo → nota 4,48. Diagnóstico: cadeia do quente e frescor, não atraso.</span></div>
+        <div><b>17–23/08</b><span>Saul recuperado (zero relatos). Sinais dentro de notas 5: 3º vazamento de molho, eco de comida fria no Aeroporto.</span></div>
+        <div><b>24–30/08</b><span>1ª semana sem nota 1 — mas <b>porcionamento voltou</b> (3 relatos, todos segunda 24/08) + descrição do cardápio e sal.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="leitura"><b>O que o cliente ensinou em agosto:</b> o produto encanta — sabor "de comida de vó", tempero em alta, feijão que virou personagem ("melhor feijão do Brasil") e embalagem elogiada. Os fios que fecharam: comida fria (após o ajuste no Saul) e vazamento. Os que seguem abertos: <b>promessa vs entrega</b> (porcionamento e descrição do cardápio) e o sinal de frescor que aparece nos cancelamentos, não nas avaliações — quem cancela não avalia.</div>
+</section>
+<section class="slide" id="s13">
+  <div class="eyebrow">PDCA · Balanço do mês</div>
+  <h2>Cinco ciclos fechados, quatro frentes abertas</h2>
+  <div class="grid duo" style="margin-top:18px">
     <div class="bloco check">
-      <h3>✅ O que foi bem</h3>
+      <h3>✅ Ciclos fechados em agosto</h3>
       <ul>
-        <li>5ª semana de alta: <b class="num">1.115 pedidos (+6,3%)</b> — o crescimento acomodou em patamar alto após o salto de +66%</li>
-        <li>Respostas às negociações dispararam: Gleba 50% → <b class="num">86%</b>, Centro e Saul 50% → 75%, Aeroporto 93% — a rotina de dono por turno pegou</li>
-        <li>Saul Elkind estabilizou: atrasos 9,9% → <b class="num">2,6%</b> e nota 4,79 acima da régua</li>
-        <li>Centro: 4ª semana seguida em <b class="num">5,00</b></li>
-        <li>Espera do entregador na melhor marca pela 2ª semana: 48,7% (5min+) e 19,5% (15min+)</li>
+        <li><b>Saul · capacidade:</b> +155% de volume derrubou a cozinha (preparo 25,8min) → redimensionou escala e mise en place → 18,3min e atrasos 2,1% na semana seguinte</li>
+        <li><b>Saul · nota 4,48:</b> comentários apontaram comida fria e tomate azedo → regeneração no 1º turno + validação de salada → 4,92 e zero relatos</li>
+        <li><b>Centro · rampagem:</b> 14 pedidos e avaliações abaixo do mínimo Super → campanha de lançamento + incentivo → 140 pedidos/sem, 4 semanas em 5,00, régua destravada</li>
+        <li><b>Rede · respostas:</b> três unidades em 50% → dono de chamados por turno, régua de 1h → 75–93% na semana seguinte</li>
+        <li><b>Rede · espera do entregador:</b> 64,8% → 48,7% de pedidos com aguardo 5min+ — queda constante o mês inteiro</li>
       </ul>
     </div>
     <div class="bloco atencao">
-      <h3>⚠️ Pontos de atenção</h3>
+      <h3>⚠️ Frentes abertas para setembro</h3>
       <ul>
-        <li>Aeroporto bateu no teto: atrasos <b class="num">12,2%</b> (45 dos 72 da rede), cancelamento 1,08% acima da régua, R$ 129,64 só de "item errado" e preparo 22,7min — dimensionar a operação para ~370 pedidos/sem</li>
-        <li>"Impróprio para consumo" em <b>três unidades</b> (≈ R$ 81 com chamados; Gleba pela 2ª semana seguida) — inspeção de frescor e validade na expedição é pauta de segurança alimentar</li>
-        <li>Centro acima da régua de cancelamento (<b class="num">1,43%</b>): 2 casos de expedição — parte não enviada e item errado</li>
-        <li>Nota da rede acomodou em 4,84 (−0,08) — sem nenhuma nota 1 na semana, mas <b>quantidade/porcionamento reapareceu</b> nos comentários (3 relatos + 1 eco, todos de 24/08): revisar gramatura e descrição antes que escale como em julho</li>
-        <li>Preparo médio da rede subiu para 19,7min (Gleba +3,5min na semana) — acompanhar antes que vire atraso</li>
+        <li><b>Aeroporto no teto:</b> 12,2% de atrasos, 1,08% de cancelamento, preparo 22,7min — aplicar o playbook do Saul para ~370 pedidos/sem</li>
+        <li><b>Expedição no almoço:</b> "item errado" + "parte não enviada" = 52% da perda; 58% dos cancelamentos entre 10h–14h e sábado como dia crítico</li>
+        <li><b>Segurança alimentar:</b> "impróprio para consumo" em três unidades nas duas últimas semanas — inspeção de frescor e validade na expedição</li>
+        <li><b>Promessa vs entrega:</b> porcionamento e descrição do cardápio voltaram aos comentários; gramatura, foto e texto precisam bater</li>
       </ul>
     </div>
   </div>
 </section>
-
-<!-- 9 · FECHO -->
-<section class="slide" id="s9">
-  <div class="eyebrow">Próxima verificação</div>
-  <h2 style="max-width:24ch">Semana 31/08–06/09: redimensionar o Aeroporto e zerar o "impróprio para consumo"</h2>
-  <p class="sub" style="margin-top:12px">No próximo PDCA, além dos pilares fixos, verificamos: Aeroporto de volta a &lt; 5% de atrasos e ≤ 1% de cancelamento; inspeção de frescor/validade implantada na expedição (meta: zero "impróprio para consumo"); respostas às negociações cruzando 100%; Centro de volta a ≤ 1%; e o preparo da rede voltando à casa dos 17min.</p>
-  <div class="cover-meta" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:26px">
-    <span class="pill">meta nota rede <b>≥ 4,8</b></span>
-    <span class="pill">meta cancelamento <b>≤ 1%</b></span>
-    <span class="pill">meta resposta a chamados <b>100%</b></span>
-    <span class="pill">meta espera 5min+ <b>&lt; 40%</b></span>
+<section class="slide" id="s14">
+  <div class="eyebrow">Setembro</div>
+  <h2 style="max-width:26ch">Setembro: 5.000 pedidos com a qualidade de agosto</h2>
+  <p class="sub" style="margin-top:12px">Prioridades do mês, em ordem: (1) redimensionar o Aeroporto — atrasos &lt; 5% e cancelamento ≤ 1%; (2) inspeção de frescor e validade na expedição — zero "impróprio para consumo"; (3) conferência reforçada no almoço e no sábado — "item errado" pela metade; (4) gramatura e descrição do cardápio batendo com a entrega; (5) respostas às negociações em 100%; (6) sustentar a nota com o volume crescendo.</p>
+  <div class="lbl" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--abraco);font-weight:700;margin-top:26px">Metas de setembro</div>
+  <div class="cover-meta" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
+    <span class="pill">avaliação <b>≥ 4,8</b></span>
+    <span class="pill">cancelamento <b>&lt; 0,5%</b></span>
+    <span class="pill">atrasos 5min+ <b>&lt; 5%</b></span>
+    <span class="pill">volume <b>5.000 pedidos</b> no mês</span>
   </div>
+  <p class="sub" style="margin-top:14px;font-size:13.5px">5.000 pedidos em setembro equivalem a ~1.170 por semana — 5% acima da última semana de agosto (1.115) e 43% acima do ritmo médio diário do mês (3.275 em 28 dias). O desafio não é vender: é entregar esse volume com atrasos abaixo de 5%.</p>
   <div class="fonte">
-    <b style="color:var(--cream)">Fonte e notas metodológicas.</b> Dados: iFood · Relatório de qualidade de operação (Portal do Parceiro), período 24/08–30/08/2026, com comparativos vs 17–23/08; atualizado em 31/08/2026. Nota da rede ponderada pelo nº de avaliações; % da rede ponderados por pedidos; tempo online = média das unidades. Motivos de cancelamento (R$) e distribuição por dia/turno conforme abas do relatório; a contagem por dia/turno cobre todos os cancelamentos (15), enquanto "cancelamentos super" conta apenas os com impacto no programa (7). Taxa de resposta às negociações conforme janela do relatório iFood. Critérios Super: elegibilidade atualizada pelo iFood em 10/05/2026 (mín. 180 pedidos e 40 avaliações nos 3 meses fechados; selo reavaliado todo dia 10; exige nível 5 no programa); nota ≥ 4,7 e cancelamento ≤ ~1% como referências divulgadas do programa. Projeções de trimestre = média semanal do histórico disponível × 13 semanas (5 semanas; Centro: 4). Área de avaliações em detalhe: extrato de avaliações publicadas na semana 17–23/08 (123 publicadas; janela por data da avaliação); painel mantém esse período até o próximo extrato.<br><br>Dell'iris · Comida Que Abraça — Grupo Ragga · Assessoria de Presidência
+    <b style="color:var(--cream)">Fonte e notas metodológicas.</b> Agosto = 4 semanas iFood (03/08–09/08, 10/08–16/08, 17/08–23/08, 24/08–30/08); a semana de abertura (27/07–02/08) e o dia 31/08 (semana em curso) ficam fora do consolidado. Operação (pedidos, cancelamentos, chamados e respostas, atrasos, preparo, espera do entregador, tempo online, motivos por R$, distribuição por dia e turno): relatório de qualidade de operação iFood exportado em 01/09/2026 com quebra semanal — conferido linha a linha com os 4 PDCAs semanais, sem divergência. Avaliações e notas por semana: relatórios semanais iFood usados nos PDCAs (atribuição pela data da avaliação), consistentes com os extratos de avaliações publicadas; o export mensal atribui avaliações por semana do pedido e apresenta contagens e notas diferentes (ex.: nota de agosto 4,70 nesse corte) — divergência registrada para verificação junto ao iFood. Nota do mês ponderada pelo nº de avaliações; percentuais da rede ponderados por pedidos; tempo online = média das unidades. Contagem por dia/turno cobre todos os cancelamentos (48); "cancelamentos super" conta apenas os com impacto no programa (18); famílias de motivo somam R$ 1.262,86 dos R$ 1.285,84 (demais motivos não listados no relatório). Voz do cliente: 4 extratos de avaliações publicadas (391 avaliações; 105 duplicatas removidas do 1º extrato). Pedidos via link digital (canal próprio): números de agosto informados pela operação, fora dos relatórios iFood; ticket médio = faturamento ÷ pedidos. Critérios Super: elegibilidade atualizada pelo iFood em 10/05/2026 (mín. 180 pedidos e 40 avaliações nos 3 meses fechados; selo reavaliado todo dia 10; exige nível 5); nota ≥ 4,7 e cancelamento ≤ ~1% como referências divulgadas do programa.<br><br>Dell'iris · Comida Que Abraça — Grupo Ragga · Assessoria de Presidência
   </div>
 </section>
-
 </main>
 
 <button id="btnAval" data-abrir-painel><span class="star">★</span><span class="lbl">Avaliações em detalhe</span></button>
@@ -547,234 +702,158 @@ tr td:first-child{font-weight:700}
   <div class="p-wrap">
     <div class="p-head">
       <div>
-        <div class="eyebrow" style="margin-bottom:8px">Dell'iris · O que os clientes disseram</div>
+        <div class="eyebrow" style="margin-bottom:8px">Dell'iris · O que os clientes disseram em agosto</div>
         <h2>Avaliações em detalhe</h2>
-        <p class="sub num">137 avaliações publicadas · semana 24–30/08/2026 · iFood</p>
+        <p class="sub num">391 avaliações publicadas · 03 a 30/08/2026 · iFood · 4 unidades</p>
       </div>
       <button id="fecharPainel" aria-label="Fechar painel">✕</button>
     </div>
-
     <div class="p-tabs" role="tablist">
-      <button class="p-tab on" data-tab="sintese" role="tab">Síntese</button>
-      <button class="p-tab" data-tab="comentarios" role="tab">Comentários (18)</button>
+      <button class="p-tab on" data-tab="sintese" role="tab">Síntese do mês</button>
+      <button class="p-tab" data-tab="comentarios" role="tab">Comentários (53)</button>
     </div>
 
-    <!-- ABA SÍNTESE -->
     <div class="p-sec on" id="tab-sintese">
       <div class="p-stats">
-        <div class="card"><div class="lbl">Nota média das publicadas</div><div class="val num">4,85</div><div class="foot">137 avaliações publicadas na semana</div></div>
-        <div class="card"><div class="lbl">Notas 4 e 5</div><div class="val num">97,1%</div><div class="foot">133 de 137 · primeira semana da série sem nota 1</div></div>
-        <div class="card"><div class="lbl">Comentários escritos</div><div class="val num">18</div><div class="foot">14 positivos · 4 críticos</div></div>
-        <div class="card"><div class="lbl">Tags negativas marcadas</div><div class="val num" style="color:var(--ok)">0</div><div class="foot">incompleto, errado, danificado ou mal embalado: 5ª semana zerada</div></div>
+        <div class="card"><div class="lbl">Nota média das publicadas</div><div class="val num">4,85</div><div class="foot">391 avaliações · 4 semanas</div></div>
+        <div class="card"><div class="lbl">Notas 4 e 5</div><div class="val num">97,7%</div><div class="foot">382 de 391 · última semana sem nenhuma nota 1</div></div>
+        <div class="card"><div class="lbl">Comentários escritos</div><div class="val num">53</div><div class="foot">44 positivos · 9 críticos</div></div>
+        <div class="card"><div class="lbl">Tags negativas marcadas</div><div class="val num" style="color:var(--ok)">0</div><div class="foot">incompleto, errado, danificado ou mal embalado: zero em 391 — o mês inteiro</div></div>
       </div>
-
-      <div class="dist">
+      <div class="dist" style="margin-top:22px">
         <div class="lbl" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac)">Distribuição das notas</div>
-        <div class="dist-row"><span class="est">5 ★</span><div class="dist-track"><div class="dist-fill n5" data-w="89.8"></div></div><span class="dq num">123 <small>· 89,8%</small></span></div>
-        <div class="dist-row"><span class="est">4 ★</span><div class="dist-track"><div class="dist-fill n4" data-w="7.3"></div></div><span class="dq num">10 <small>· 7,3%</small></span></div>
-        <div class="dist-row"><span class="est">3 ★</span><div class="dist-track"><div class="dist-fill n3" data-w="0.7"></div></div><span class="dq num">1 <small>· 0,7%</small></span></div>
-        <div class="dist-row"><span class="est">2 ★</span><div class="dist-track"><div class="dist-fill n2" data-w="2.2"></div></div><span class="dq num">3 <small>· 2,2%</small></span></div>
-        <div class="dist-row"><span class="est">1 ★</span><div class="dist-track"><div class="dist-fill n1" data-w="0"></div></div><span class="dq num">0 <small>· 0%</small></span></div>
+        <div class="dist-row"><span class="est">5 ★</span><div class="dist-track"><div class="dist-fill n5" data-w="90.5"></div></div><span class="dq num">354 <small>· 90,5%</small></span></div>
+<div class="dist-row"><span class="est">4 ★</span><div class="dist-track"><div class="dist-fill n4" data-w="7.2"></div></div><span class="dq num">28 <small>· 7,2%</small></span></div>
+<div class="dist-row"><span class="est">3 ★</span><div class="dist-track"><div class="dist-fill n3" data-w="0.3"></div></div><span class="dq num">1 <small>· 0,3%</small></span></div>
+<div class="dist-row"><span class="est">2 ★</span><div class="dist-track"><div class="dist-fill n2" data-w="1.3"></div></div><span class="dq num">5 <small>· 1,3%</small></span></div>
+<div class="dist-row"><span class="est">1 ★</span><div class="dist-track"><div class="dist-fill n1" data-w="0.8"></div></div><span class="dq num">3 <small>· 0,8%</small></span></div>
       </div>
-
       <div class="duo-aval">
         <div class="card">
           <div class="lbl">👍 O que os clientes elogiam</div>
-          <div class="tag-bars">
-            <div class="tg-row"><span>Comida saborosa</span><div class="tg-track"><div class="tg-fill" data-w="70"></div></div><span class="tv num">70%</span></div>
-            <div class="tg-row"><span>Bem temperada</span><div class="tg-track"><div class="tg-fill" data-w="55"></div></div><span class="tv num">55%</span></div>
-            <div class="tg-row"><span>Boa aparência</span><div class="tg-track"><div class="tg-fill" data-w="41"></div></div><span class="tv num">41%</span></div>
-            <div class="tg-row"><span>Boa embalagem</span><div class="tg-track"><div class="tg-fill" data-w="39"></div></div><span class="tv num">39%</span></div>
-            <div class="tg-row"><span>Boa quantidade</span><div class="tg-track"><div class="tg-fill" data-w="37"></div></div><span class="tv num">37%</span></div>
-            <div class="tg-row"><span>Bons ingredientes</span><div class="tg-track"><div class="tg-fill" data-w="33"></div></div><span class="tv num">33%</span></div>
-          </div>
-          <div class="tema">
-            <div class="t-top"><span class="t-nome">Tempero no recorde</span><span class="t-qtd">55% marcaram "bem temperada"</span></div>
-            <div class="t-desc">Maior percentual da série para a tag — e o texto acompanha: <em>"arroz bem temperado"</em> em dose dupla, <em>"muito bem temperada"</em>, <em>"o tempero da carne estava muito bom"</em>.</div>
-          </div>
-          <div class="tema">
-            <div class="t-top"><span class="t-nome">O feijão virou personagem</span><span class="t-qtd">de crítica a assinatura</span></div>
-            <div class="t-desc"><em>"Top. Melhor feijão do Brasil!"</em> — em julho o feijão era motivo de reclamação (preto vs carioca); virou marca registrada nos elogios.</div>
-          </div>
-          <div class="tema">
-            <div class="t-top"><span class="t-nome">Prova social funcionando</span><span class="t-qtd">cliente leu e confirmou</span></div>
-            <div class="t-desc"><em>"Li algo sobre o feijão e realmente é delicioso"</em> — cliente novo escolheu pelas avaliações e virou fã: <em>"QUE ABSURDO DE COMIDA BOA! … comeria todo santo dia"</em>. Mais <em>"melhor PF que eu já comi no iFood"</em> e novos <em>"virei cliente"</em>.</div>
-          </div>
-          <div class="tema">
-            <div class="t-top"><span class="t-nome">O que zerou</span><span class="t-qtd">fios encerrados</span></div>
-            <div class="t-desc">Comida fria: 2ª semana limpa após o ajuste de regeneração. Vazamento: nenhum relato — embalagem só apareceu em elogio (<em>"bem embalada"</em>). Tags negativas: 5ª semana zeradas.</div>
-          </div>
+          <div class="mini-bars" style="margin-top:14px"><div class="mb-row"><span>Comida saborosa</span><div class="mb-track"><div class="mb-fill calm" data-w="100"></div></div><span class="mb-val num">74%</span></div>
+<div class="mb-row"><span>Bem temperada</span><div class="mb-track"><div class="mb-fill calm" data-w="65"></div></div><span class="mb-val num">48%</span></div>
+<div class="mb-row"><span>Boa aparência</span><div class="mb-track"><div class="mb-fill calm" data-w="55"></div></div><span class="mb-val num">41%</span></div>
+<div class="mb-row"><span>Boa embalagem</span><div class="mb-track"><div class="mb-fill calm" data-w="54"></div></div><span class="mb-val num">40%</span></div>
+<div class="mb-row"><span>Boa quantidade</span><div class="mb-track"><div class="mb-fill calm" data-w="51"></div></div><span class="mb-val num">38%</span></div>
+<div class="mb-row"><span>Bons ingredientes</span><div class="mb-track"><div class="mb-fill calm" data-w="46"></div></div><span class="mb-val num">34%</span></div></div>
+          <div class="tema"><div class="t-top"><span class="t-nome">"Comida de vó" é o motor</span><span class="t-qtd">74% marcaram "saborosa"</span></div><div class="t-desc">O tema que atravessa o mês inteiro: <em>"comidinha de vó mesmo"</em>, <em>"sabor de comida de mãe"</em>, <em>"sabor de outro mundo"</em>, <em>"melhor PF que eu já comi no iFood"</em>. 44 dos 53 comentários são elogios, e quase todos citam sabor.</div></div>
+          <div class="tema"><div class="t-top"><span class="t-nome">Tempero e feijão viraram assinatura</span><span class="t-qtd">"bem temperada" de 44% → 55%</span></div><div class="t-desc">A tag subiu semana a semana. O feijão fez a virada completa: reclamação em julho (preto vs carioca) e <em>"Top. Melhor feijão do Brasil!"</em> na última semana — com um cliente confirmando: <em>"li algo sobre o feijão e realmente é delicioso"</em>.</div></div>
+          <div class="tema"><div class="t-top"><span class="t-nome">Embalagem: de neutra a elogio</span><span class="t-qtd">"boa embalagem" de 29% → ~40%</span></div><div class="t-desc">A caixa com itens separados foi citada como diferencial desde a 1ª quinzena (<em>"chega tudo arrumadinho, sem misturar"</em>); em agosto virou elogio espontâneo: <em>"caixinhas super bem embaladas"</em>, <em>"impecável"</em>, <em>"bonita, organizada e lacrada"</em>.</div></div>
+          <div class="tema"><div class="t-top"><span class="t-nome">Fidelização no primeiro pedido</span><span class="t-qtd">todas as semanas</span></div><div class="t-desc"><em>"virei cliente"</em> aparece em cada uma das 4 semanas; <em>"ganharam uma cliente"</em>, <em>"comeria todo santo dia"</em>, <em>"parabéns pro pessoal que teve a ideia de trazer pra Londrina"</em> — e defesa espontânea da marca uma semana após críticas.</div></div>
         </div>
         <div class="card">
           <div class="lbl">👎 O que os clientes criticam</div>
-          <div class="tema crit">
-            <div class="t-top"><span class="t-nome">Quantidade/porcionamento voltou</span><span class="t-qtd">3 de 4 críticos · tema da semana</span></div>
-            <div class="t-desc"><em>"caixa muito pequena… o strogonoff parece que roubaram a metade"</em> (Aeroporto), <em>"pouca comida pelo preço"</em> (Gleba) — mais o eco <em>"bem pequeno"</em> dentro de nota 5 no Saul. O tema que tinha zerado voltou: revisar gramatura e porcionamento, com foto e descrição batendo com a entrega, antes que escale como em julho.</div>
-          </div>
-          <div class="tema crit">
-            <div class="t-top"><span class="t-nome">Descrição do cardápio — Aeroporto</span><span class="t-qtd">1 relato</span></div>
-            <div class="t-desc"><em>"o frango chapeado com salada não vem arroz e feijão como consta na descrição"</em> (24/08) — ajustar o texto do item ou incluir os acompanhamentos; é promessa vs entrega, o mesmo fio de julho.</div>
-          </div>
-          <div class="tema crit">
-            <div class="t-top"><span class="t-nome">Sal na carne ao molho — Gleba</span><span class="t-qtd">1 relato</span></div>
-            <div class="t-desc"><em>"carne ao molho sem condições de comer… muito salgada"</em> (24/08) — checagem de tempero por lote; caso isolado, mas do tipo que vira nota 2.</div>
-          </div>
-          <div class="tema alerta">
-            <div class="t-top"><span class="t-nome">Segunda-feira concentrou tudo</span><span class="t-qtd">4 de 4 críticos em 24/08</span></div>
-            <div class="t-desc">Todos os relatos críticos da semana são da segunda-feira — abertura de semana pede reforço de conferência (porcionamento e tempero) no primeiro turno.</div>
-          </div>
-          <div class="tema">
-            <div class="t-top"><span class="t-nome">O que não apareceu</span><span class="t-qtd">leitura importante</span></div>
-            <div class="t-desc">"Impróprio para consumo" não ecoou nas avaliações — o sinal segue <b>apenas nos cancelamentos</b> (quem cancela não avalia); a inspeção de frescor continua guiada por lá. Também sem relatos de comida fria, atraso ou vazamento.</div>
-          </div>
+          <div class="tema crit"><div class="t-top"><span class="t-nome">Promessa vs entrega — o fio mais persistente</span><span class="t-qtd">reapareceu após zerar</span></div><div class="t-desc">Porcionamento e descrição do cardápio: abriu a série em julho (<em>"400g… tinha 292g"</em>, <em>"propaganda enganosa"</em>), zerou na 2ª semana, voltou na 3ª (marmita média) e na 4ª com 3 relatos (<em>"strogonoff… roubaram a metade"</em>, <em>"pouca comida pelo preço"</em>, frango chapeado sem os acompanhamentos descritos). Gramatura, foto e texto precisam bater.</div></div>
+          <div class="tema crit"><div class="t-top"><span class="t-nome">Temperatura — ciclo fechado no Saul</span><span class="t-qtd">2 relatos na 2ª semana + 1 eco</span></div><div class="t-desc"><em>"vem gelada, não é morna"</em> e <em>"comida fria"</em> derrubaram o Saul para 4,48; regeneração no 1º turno resolveu — 4,92 na semana seguinte e zero relatos desde então. Um eco no Aeroporto na 3ª semana (<em>"comida estava fria, frango seco"</em>), sem repetição.</div></div>
+          <div class="tema alerta"><div class="t-top"><span class="t-nome">Frescor de insumo</span><span class="t-qtd">sinal mora nos cancelamentos</span></div><div class="t-desc">Nos comentários, um caso (<em>"tomate completamente azedo"</em>, Saul, 2ª semana). Nos cancelamentos, "impróprio para consumo" apareceu em 3 unidades nas 2 últimas semanas (R$ 60 no mês) — quem cancela não avalia, por isso a inspeção de frescor se guia pelo relatório de cancelamentos.</div></div>
+          <div class="tema alerta"><div class="t-top"><span class="t-nome">Embalagem vazando — 3 casos, depois zero</span><span class="t-qtd">padronizar tampa/lacre</span></div><div class="t-desc">Porções sem saquinho (28/07), marmita virada (15/08), feijão vazando (19/08) — todos com sugestão do próprio cliente. Na última semana, nenhum relato e só elogios à embalagem; vale consolidar a solução antes que volte.</div></div>
+          <div class="tema"><div class="t-top"><span class="t-nome">Execução pontual e o que zerou</span><span class="t-qtd">sem padrão por unidade</span></div><div class="t-desc">Sal na carne ao molho, arroz sem sal, frango com nervos: casos isolados, sem repetição por unidade. O que não voltou: corpo estranho (1 caso em julho) e as tags negativas — <b>zero em 391 avaliações</b>.</div></div>
         </div>
       </div>
-      <div class="leitura" style="margin-top:22px"><b>Síntese executiva:</b> primeira semana da série <b>sem nenhuma nota 1</b> — 97,1% em 4–5 e tempero no recorde. A queda leve da Gleba tem tema (quantidade + um caso de sal, ambos em 24/08); a do Saul é dispersão, sem crítica escrita. O aviso da semana: <b>quantidade/porcionamento reapareceu</b> em 3 relatos + 1 eco — mesma família que abriu a série em julho — e a segunda-feira concentrou todos os críticos. Revisão de gramatura + conferência reforçada na abertura da semana resolvem os dois.</div>
+      <div class="leitura" style="margin-top:22px"><b>Síntese executiva do mês:</b> o produto fideliza no primeiro pedido — sabor, tempero e embalagem em alta, 97,7% das avaliações em 4–5. Dois ciclos de qualidade foram abertos e fechados dentro do mês pela voz do cliente (temperatura no Saul, vazamento). O risco estrutural é <b>promessa vs entrega</b>: porcionamento e descrição do cardápio são o único tema que reapareceu depois de zerar — e a única frente em que setembro precisa de solução de ficha técnica, não de rotina.</div>
     </div>
 
-    <!-- ABA COMENTÁRIOS -->
     <div class="p-sec" id="tab-comentarios">
-      <div class="filtros" id="fLoja">
-        <button class="chip on" data-loja="todas">Todas as unidades</button>
-        <button class="chip" data-loja="Gleba Palhano">Gleba (6)</button>
-        <button class="chip" data-loja="Aeroporto">Aeroporto (9)</button>
-        <button class="chip" data-loja="Saul Elkind">Saul Elkind (2)</button>
-        <button class="chip" data-loja="Centro">Centro (1)</button>
+      <div class="filtros" id="fLoja"><span class="f-lbl">Unidade</span>
+        <button class="chip on" data-loja="todas">Todas</button>
+        <button class="chip" data-loja="Gleba Palhano">Gleba (22)</button>
+        <button class="chip" data-loja="Aeroporto">Aeroporto (19)</button>
+        <button class="chip" data-loja="Saul Elkind">Saul Elkind (9)</button>
+        <button class="chip" data-loja="Centro">Centro (3)</button>
       </div>
-      <div class="filtros" id="fTipo">
+      <div class="filtros" id="fTipo"><span class="f-lbl">Tipo</span>
         <button class="chip on" data-tipo="todos">Todos</button>
-        <button class="chip" data-tipo="pos">👍 Positivos · notas 4–5 (14)</button>
-        <button class="chip" data-tipo="neg">👎 Críticos · notas 1–3 (4)</button>
+        <button class="chip" data-tipo="pos">👍 Positivos · 4–5 (44)</button>
+        <button class="chip" data-tipo="neg">👎 Críticos · 1–3 (9)</button>
+      </div>
+      <div class="filtros" id="fSem"><span class="f-lbl">Semana</span>
+        <button class="chip on" data-sem="todas">Todas</button>
+        <button class="chip" data-sem="03–09/08">03–09/08 (4)</button>
+        <button class="chip" data-sem="10–16/08">10–16/08 (15)</button>
+        <button class="chip" data-sem="17–23/08">17–23/08 (16)</button>
+        <button class="chip" data-sem="24–30/08">24–30/08 (18)</button>
       </div>
       <div id="contagem"></div>
       <div id="listaCom"></div>
-      <div class="p-nota-met">Comentários publicados na íntegra, como escritos pelos clientes no iFood. Base: extrato de avaliações publicadas na semana 24–30/08/2026 (137 avaliações, todas com status "publicada"; sem duplicatas neste export). A data exibida é a da avaliação. A diferença de contagem vs o relatório de qualidade (137 vs 114) decorre do critério de janela do próprio iFood. Classificação: positivos = notas 4–5 · críticos = notas 1–3.</div>
+      <div class="p-nota-met">Comentários publicados na íntegra, como escritos pelos clientes no iFood. Base: os 4 extratos semanais de avaliações publicadas de agosto (03–09, 10–16, 17–23 e 24–30/08), validados semana a semana contra o relatório de qualidade — 391 avaliações após a remoção de 105 duplicatas do 1º extrato. O extrato mensal (01–31/08) recebido em 01/09 não foi utilizado: 127 linhas com colunas deslocadas, o bloco "Saul Elkind" idêntico ao do Aeroporto e nenhuma avaliação real do Saul — defeito reportado. Datas exibidas: do pedido no 1º e 2º extratos, da avaliação no 3º e 4º. Classificação: positivos = notas 4–5 · críticos = notas 1–3.</div>
     </div>
   </div>
 </div>
 
 <nav id="nav" aria-label="Navegação de slides">
   <button id="prev" aria-label="Slide anterior">←</button>
-  <span id="counter">1 / 9</span>
+  <span id="counter">1 / 14</span>
   <button id="next" aria-label="Próximo slide">→</button>
 </nav>
-
 <script>
 (function(){
   var slides=[].slice.call(document.querySelectorAll('.slide')),i=0,n=slides.length;
   var counter=document.getElementById('counter'),bar=document.getElementById('progress');
-  function anim(s){
-    [].forEach.call(s.querySelectorAll('.fill,.mb-fill'),function(el){
-      el.style.width=el.getAttribute('data-w')+'%';
-    });
-  }
-  function go(k){
-    if(k<0||k>=n)return;
-    slides[i].classList.remove('active');
-    slides[i].classList.toggle('prev',k>i);
-    i=k;
-    slides.forEach(function(s,j){s.classList.toggle('prev',j<i);});
-    slides[i].classList.add('active');
-    slides[i].scrollTop=0;
-    counter.textContent=(i+1)+' / '+n;
-    bar.style.width=((i+1)/n*100)+'%';
-    anim(slides[i]);
-  }
-  document.getElementById('next').onclick=function(){go(i+1)};
-  document.getElementById('prev').onclick=function(){go(i-1)};
-  document.addEventListener('keydown',function(e){
-    if(!painel.hidden){ if(e.key==='Escape')fecharP(); return; }
-    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ')go(i+1);
-    if(e.key==='ArrowLeft'||e.key==='PageUp')go(i-1);
-    if(e.key==='Home')go(0);
-    if(e.key==='End')go(n-1);
-  });
+  var painel=document.getElementById('painel'),btnAval=document.getElementById('btnAval'),painelAnimado=false;
+  function anim(s){[].forEach.call(s.querySelectorAll('.mb-fill,.dist-fill'),function(el){el.style.width=el.getAttribute('data-w')+'%';});}
+  function go(k){if(k<0||k>=n)return;slides[i].classList.remove('active');i=k;slides.forEach(function(s,j){s.classList.toggle('prev',j<i);});slides[i].classList.add('active');slides[i].scrollTop=0;counter.textContent=(i+1)+' / '+n;bar.style.width=((i+1)/n*100)+'%';anim(slides[i]);}
+  document.getElementById('next').onclick=function(){go(i+1)};document.getElementById('prev').onclick=function(){go(i-1)};
+  document.addEventListener('keydown',function(e){if(!painel.hidden){if(e.key==='Escape')fecharP();return;}if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ')go(i+1);if(e.key==='ArrowLeft'||e.key==='PageUp')go(i-1);if(e.key==='Home')go(0);if(e.key==='End')go(n-1);});
   var x0=null,y0=null;
   document.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
-  document.addEventListener('touchend',function(e){
-    if(!painel.hidden){x0=y0=null;return;}
-    if(x0===null)return;
-    var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
-    if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){dx<0?go(i+1):go(i-1);}
-    x0=y0=null;
-  },{passive:true});
-  bar.style.width=(1/n*100)+'%';
-  anim(slides[0]);
+  document.addEventListener('touchend',function(e){if(!painel.hidden){x0=y0=null;return;}if(x0===null)return;var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){dx<0?go(i+1):go(i-1);}x0=y0=null;},{passive:true});
+  bar.style.width=(1/n*100)+'%';anim(slides[0]);
 
-  /* ---------- painel de avaliações ---------- */
-  var painel=document.getElementById('painel');
-  var btnAval=document.getElementById('btnAval');
-  var painelAnimado=false;
-
-  var AVAL=[{"d":"29/08","l":"Aeroporto","n":5,"t":"Muito bom o tempero só poderia tirar os nervos do frango e picar menor de resto maravilhoso"},{"d":"29/08","l":"Aeroporto","n":5,"t":"Melhor pf que eu já comi no Ifood"},{"d":"29/08","l":"Saul Elkind","n":5,"t":"Comida saborosa amei"},{"d":"29/08","l":"Gleba Palhano","n":5,"t":"Surreal! Certamente pedirei novamente. Comida saborosa, bem feita, bem embalada. Super recomendo!!"},{"d":"28/08","l":"Gleba Palhano","n":5,"t":"Que comida perfeita ❤️❤️ sabor incrível feita com carinho mesmo amei"},{"d":"28/08","l":"Saul Elkind","n":5,"t":"Bem pequeno, bom aparência"},{"d":"27/08","l":"Aeroporto","n":5,"t":"Comida impecável"},{"d":"27/08","l":"Aeroporto","n":5,"t":"QUE ABSURDO DE COMIDA BOA!Me surpreendi com tudo, sabor, quantidade, tempero, embalagem. Eu comeria todo santo dia! Pedi a de frango empanado com salada e tudo veio numa ótima quantidade. Salada do jeito que eu amo. Não conhecia mas vou pedir mais vezes. Li algo sobre o feijão e realmente é delicios"},{"d":"27/08","l":"Centro","n":5,"t":"Comida deliciosa, obrigado pelo capricho."},{"d":"26/08","l":"Gleba Palhano","n":5,"t":"Achei o arroz soltinho, bem temperado e cozido. O tempero da carne estava muito bom."},{"d":"26/08","l":"Gleba Palhano","n":5,"t":"Restaurante Exelente, minha comida chegou super rápida, saborosa demais."},{"d":"25/08","l":"Aeroporto","n":5,"t":"Top. Melhor feijão do Brasil!"},{"d":"24/08","l":"Aeroporto","n":2,"t":"Caixa muito pequena, mais muito pequena mesmo!!!!! Vem menos comida do que uma marmita baby tradicional. O strogonoff parece que roubaram a metade, pq ele estava literalmente fundinho da caixa."},{"d":"24/08","l":"Aeroporto","n":3,"t":"O frango chapeado com salada não vem arroz e feijão como consta na descrição, sendo necessário pedir e/ou pagar para temperar a salada com algumas coisas. Não vale muito a pena."},{"d":"24/08","l":"Aeroporto","n":5,"t":"Maravilhosa, comida perfeita, superou minhas expectativas, arroz bem temperado, virei cliente, com certeza vou pedir mas vezes👏🏻😍"},{"d":"24/08","l":"Gleba Palhano","n":2,"t":"Pouca comida pelo preço"},{"d":"24/08","l":"Gleba Palhano","n":2,"t":"Carne ao molho sem condições de comer ... Muito salgada"},{"d":"24/08","l":"Aeroporto","n":5,"t":"Comida excelente! Gostinho de comida caseira, bem servida e muito bem temperada."}];
-
-  var fLoja='todas', fTipo='todos';
+  var AVAL=[{"d":"29/08","l":"Saul Elkind","n":5,"s":"24–30/08","t":"Comida saborosa amei"},{"d":"29/08","l":"Aeroporto","n":5,"s":"24–30/08","t":"Muito bom o tempero só poderia tirar os nervos do frango e picar menor de resto maravilhoso"},{"d":"29/08","l":"Aeroporto","n":5,"s":"24–30/08","t":"Melhor pf que eu já comi no Ifood"},{"d":"29/08","l":"Gleba Palhano","n":5,"s":"24–30/08","t":"Surreal! Certamente pedirei novamente. Comida saborosa, bem feita, bem embalada. Super recomendo!!"},{"d":"28/08","l":"Saul Elkind","n":5,"s":"24–30/08","t":"Bem pequeno, bom aparência"},{"d":"28/08","l":"Gleba Palhano","n":5,"s":"24–30/08","t":"Que comida perfeita ❤️❤️ sabor incrível feita com carinho mesmo amei"},{"d":"27/08","l":"Centro","n":5,"s":"24–30/08","t":"Comida deliciosa, obrigado pelo capricho."},{"d":"27/08","l":"Aeroporto","n":5,"s":"24–30/08","t":"QUE ABSURDO DE COMIDA BOA!Me surpreendi com tudo, sabor, quantidade, tempero, embalagem. Eu comeria todo santo dia! Pedi a de frango empanado com salada e tudo veio numa ótima quantidade. Salada do jeito que eu amo. Não conhecia mas vou pedir mais vezes. Li algo sobre o feijão e realmente é delicios"},{"d":"27/08","l":"Aeroporto","n":5,"s":"24–30/08","t":"Comida impecável"},{"d":"26/08","l":"Gleba Palhano","n":5,"s":"24–30/08","t":"Restaurante Exelente, minha comida chegou super rápida, saborosa demais."},{"d":"26/08","l":"Gleba Palhano","n":5,"s":"24–30/08","t":"Achei o arroz soltinho, bem temperado e cozido. O tempero da carne estava muito bom."},{"d":"25/08","l":"Aeroporto","n":5,"s":"24–30/08","t":"Top. Melhor feijão do Brasil!"},{"d":"24/08","l":"Aeroporto","n":3,"s":"24–30/08","t":"O frango chapeado com salada não vem arroz e feijão como consta na descrição, sendo necessário pedir e/ou pagar para temperar a salada com algumas coisas. Não vale muito a pena."},{"d":"24/08","l":"Aeroporto","n":5,"s":"24–30/08","t":"Comida excelente! Gostinho de comida caseira, bem servida e muito bem temperada."},{"d":"24/08","l":"Aeroporto","n":5,"s":"24–30/08","t":"Maravilhosa, comida perfeita, superou minhas expectativas, arroz bem temperado, virei cliente, com certeza vou pedir mas vezes👏🏻😍"},{"d":"24/08","l":"Aeroporto","n":2,"s":"24–30/08","t":"Caixa muito pequena, mais muito pequena mesmo!!!!! Vem menos comida do que uma marmita baby tradicional. O strogonoff parece que roubaram a metade, pq ele estava literalmente fundinho da caixa."},{"d":"24/08","l":"Gleba Palhano","n":2,"s":"24–30/08","t":"Pouca comida pelo preço"},{"d":"24/08","l":"Gleba Palhano","n":2,"s":"24–30/08","t":"Carne ao molho sem condições de comer ... Muito salgada"},{"d":"21/08","l":"Aeroporto","n":5,"s":"17–23/08","t":"A comida é uma delíciaaaaa, ganharam mto uma cliente! Mto bonitinha as caixinhas e elas vem super bem embaladas."},{"d":"20/08","l":"Centro","n":5,"s":"17–23/08","t":"Strogonoff muito gostoso!"},{"d":"20/08","l":"Gleba Palhano","n":5,"s":"17–23/08","t":"Comida maravilhosa"},{"d":"20/08","l":"Gleba Palhano","n":1,"s":"17–23/08","t":"Muito saboroso, porém quantidade mínima. Muito pouco mesmo. Pra quem pede marmita media essa não serve"},{"d":"20/08","l":"Gleba Palhano","n":5,"s":"17–23/08","t":"Comida maravilhosa! Primeira vez que peço e vou pedir mais"},{"d":"19/08","l":"Gleba Palhano","n":5,"s":"17–23/08","t":"A comida é mto boa, mas acho q vcs poderiam rever a embalagem das comidas com mais molho, como o feijão, pois ele chegou vazando"},{"d":"19/08","l":"Gleba Palhano","n":5,"s":"17–23/08","t":"Marmita Top!!! Embalagem impecável e Sabor de outro mundo!! Diferente dos Iguais 🔥"},{"d":"19/08","l":"Aeroporto","n":5,"s":"17–23/08","t":"Acho que faltou um pouco de tempero no arroz e feijão"},{"d":"19/08","l":"Aeroporto","n":5,"s":"17–23/08","t":"Comida muito saborosa e em ótima quantidade! A embalagem também me surpreendeu positivamente: bonita, muito bem organizada e lacrada, demonstrando todo o cuidado e capricho com o pedido. Adorei a experiência e recomendo!"},{"d":"19/08","l":"Aeroporto","n":5,"s":"17–23/08","t":"A comida estava fria e o frango mesmo sendo Strogonoff tava um pouco seco. Fora isso estava bem bom, o tempero bem gostoso e o arroz soltinho"},{"d":"19/08","l":"Gleba Palhano","n":5,"s":"17–23/08","t":"Comida deliciosa ! Com sabor de comida de mae ! Pra quem pede marmita esse é o melhor sabor ! Continuem com esse capricho!"},{"d":"18/08","l":"Aeroporto","n":5,"s":"17–23/08","t":"Comida muito boa"},{"d":"17/08","l":"Saul Elkind","n":5,"s":"17–23/08","t":"Comida excelente, parabéns!!"},{"d":"17/08","l":"Centro","n":5,"s":"17–23/08","t":"Primeira vez que peço e amei muito, embalagem perfeita, entrega mega rápida, comida deliciosa e preço super justo, Deus abençoe vocês da equipe, parabéns pelo trabalho incrível!"},{"d":"17/08","l":"Aeroporto","n":5,"s":"17–23/08","t":"muito boa! chegou rapidinho e bem quentinha a comida! parabéns pro pessoal que teve a ideia de trazer pra Londrina! que Deus abençoe vcs"},{"d":"17/08","l":"Aeroporto","n":5,"s":"17–23/08","t":"Comida muito boa e muito bem apresentável, com certeza uma ótima opção para pedir no dia a dia"},{"d":"15/08","l":"Saul Elkind","n":5,"s":"10–16/08","t":"Chegou rápido, quentinha e com um sabor impecável parabéns"},{"d":"15/08","l":"Gleba Palhano","n":4,"s":"10–16/08","t":"Tá ok a marmita, mas parece que veio virada e vazou tudo na minha mão e roupa, talvez ver alguma tampa pra não acontecer mais isso."},{"d":"15/08","l":"Saul Elkind","n":5,"s":"10–16/08","t":"Nunca peço Strogonoff em marmita, mas aparência estava boa e queria algo leve.fiquei surpresa, estava muito gostoso e era de verdade, não aqueles Strogonoff 's aguados.Só uma observação, para o meu gosto os pedaços de frango estavam muito grandes, nada que tenha atrapalhado e poderia ter Champion."},{"d":"15/08","l":"Gleba Palhano","n":5,"s":"10–16/08","t":"QUE COMIDA MARAVILHOSA! 😋❤️"},{"d":"14/08","l":"Saul Elkind","n":5,"s":"10–16/08","t":"Parece pouquinho na embalagem, mas é bastante KKKKKK, uma delicia"},{"d":"13/08","l":"Saul Elkind","n":1,"s":"10–16/08","t":"Pedi ontem na janta 02 caixas o tomate estava completamente azedo ! Junto com as demais saladas estragou tudo, comida fria, foi uma péssima experiência NÃO RECOMENDO!"},{"d":"13/08","l":"Aeroporto","n":5,"s":"10–16/08","t":"Comida excelente"},{"d":"13/08","l":"Aeroporto","n":5,"s":"10–16/08","t":"Comida muito boa!! Não entendo quem está falando mal, peco de isca de frango com molho picante, e já foi meu segundo pedido e sempre muito gostoso!! Parabéns pessoal 🙏🏻💖"},{"d":"11/08","l":"Gleba Palhano","n":5,"s":"10–16/08","t":"Tudo gostoso! Amando o strogonoff!"},{"d":"10/08","l":"Gleba Palhano","n":5,"s":"10–16/08","t":"Quantidade de proteina boa demais, alem da comida estar muito boa"},{"d":"10/08","l":"Saul Elkind","n":1,"s":"10–16/08","t":"E a primeira vez em minha vida que compro uma marmita que vem gelada , não é morna e sim gelada , carne dura , é tudo sem sabor. Sinal que deve ser tudo congelado e descongelado conforme pedido"},{"d":"10/08","l":"Saul Elkind","n":2,"s":"10–16/08","t":"Horrível a comida e veio muito pouco"},{"d":"09/08","l":"Gleba Palhano","n":2,"s":"10–16/08","t":"Marmita de carne de panela já é cara, aí o Feijão e arroz duro e sem tempero nenhum, carne de panela 3 pedacinhos pequenos e sem tempero tbm, poxa aí judia né…"},{"d":"08/08","l":"Gleba Palhano","n":5,"s":"10–16/08","t":"Nossa, eu e minha mãe amamos as marmitas. Estavam ótimas, quentinhas, quantidade excelente, só elogios. Recomendo demais. Parabéns a loja"},{"d":"08/08","l":"Aeroporto","n":5,"s":"10–16/08","t":"Comida muito gostosa!! Parabéns 🙏🏻"},{"d":"05/08","l":"Gleba Palhano","n":5,"s":"03–09/08","t":"Estava muito bom"},{"d":"05/08","l":"Gleba Palhano","n":5,"s":"03–09/08","t":"Comida muito boa , realmente uma comida que da pra sentir o carinho que é feita , parabéns , ganharam um cliente !"},{"d":"04/08","l":"Gleba Palhano","n":5,"s":"03–09/08","t":"Tava tudo ótimo, experiência super positiva! Comida gostosa! Amei o strogonoff!"},{"d":"04/08","l":"Gleba Palhano","n":5,"s":"03–09/08","t":"Frango empanado veio um pouco cru, mas o sabor é muito bom."}];
+  var fLoja='todas',fTipo='todos',fSem='todas';
   function renderCom(){
-    var lista=document.getElementById('listaCom'), cont=document.getElementById('contagem');
-    lista.innerHTML='';
-    var vis=AVAL.filter(function(c){
-      if(fLoja!=='todas'&&c.l!==fLoja)return false;
-      if(fTipo==='pos'&&c.n<4)return false;
-      if(fTipo==='neg'&&c.n>3)return false;
-      return true;
-    });
+    var lista=document.getElementById('listaCom'),cont=document.getElementById('contagem');lista.innerHTML='';
+    var vis=AVAL.filter(function(c){if(fLoja!=='todas'&&c.l!==fLoja)return false;if(fTipo==='pos'&&c.n<4)return false;if(fTipo==='neg'&&c.n>3)return false;if(fSem!=='todas'&&c.s!==fSem)return false;return true;});
     cont.textContent='Mostrando '+vis.length+' de '+AVAL.length+' comentários · mais recentes primeiro';
-    if(!vis.length){
-      var v=document.createElement('div');v.className='vazio';
-      v.textContent='Nenhum comentário no período para este filtro.';
-      lista.appendChild(v);return;
-    }
-    vis.forEach(function(c){
-      var card=document.createElement('div');card.className='com-card'+(c.n<=3?' critico':'');
+    if(!vis.length){var v=document.createElement('div');v.className='vazio';v.textContent='Nenhum comentário para esta combinação de filtros.';lista.appendChild(v);return;}
+    vis.forEach(function(c){var card=document.createElement('div');card.className='com-card'+(c.n<=3?' critico':'');
       var top=document.createElement('div');top.className='com-top';
       var loja=document.createElement('span');loja.className='cloja';loja.textContent=c.l;
-      var data=document.createElement('span');data.textContent=c.d+'/2026';
+      var data=document.createElement('span');data.textContent=c.d+'/2026 · semana '+c.s;
       var nota=document.createElement('span');nota.className='com-nota b'+c.n;nota.textContent=c.n+' ★';
       top.appendChild(loja);top.appendChild(data);top.appendChild(nota);
       var txt=document.createElement('div');txt.className='com-txt';txt.textContent=c.t;
-      card.appendChild(top);card.appendChild(txt);
-      lista.appendChild(card);
-    });
+      card.appendChild(top);card.appendChild(txt);lista.appendChild(card);});
   }
-  function abrirP(){
-    painel.hidden=false;
-    if(!painelAnimado){
-      painelAnimado=true;
-      setTimeout(function(){
-        [].forEach.call(painel.querySelectorAll('.dist-fill,.tg-fill'),function(el){
-          el.style.width=el.getAttribute('data-w')+'%';
-        });
-      },60);
-      renderCom();
-    }
-    document.getElementById('fecharPainel').focus();
-  }
+  function abrirP(){painel.hidden=false;if(!painelAnimado){painelAnimado=true;setTimeout(function(){[].forEach.call(painel.querySelectorAll('.dist-fill,.mb-fill'),function(el){el.style.width=el.getAttribute('data-w')+'%';});},60);renderCom();}document.getElementById('fecharPainel').focus();}
   function fecharP(){painel.hidden=true;btnAval.focus();}
   [].forEach.call(document.querySelectorAll('[data-abrir-painel]'),function(b){b.addEventListener('click',abrirP);});
   document.getElementById('fecharPainel').addEventListener('click',fecharP);
-
-  [].forEach.call(document.querySelectorAll('.p-tab'),function(t){
-    t.addEventListener('click',function(){
-      [].forEach.call(document.querySelectorAll('.p-tab'),function(x){x.classList.remove('on')});
-      t.classList.add('on');
-      document.getElementById('tab-sintese').classList.toggle('on',t.getAttribute('data-tab')==='sintese');
-      document.getElementById('tab-comentarios').classList.toggle('on',t.getAttribute('data-tab')==='comentarios');
-      painel.scrollTop=0;
-    });
-  });
-  [].forEach.call(document.querySelectorAll('#fLoja .chip'),function(ch){
-    ch.addEventListener('click',function(){
-      [].forEach.call(document.querySelectorAll('#fLoja .chip'),function(x){x.classList.remove('on')});
-      ch.classList.add('on');fLoja=ch.getAttribute('data-loja');renderCom();
-    });
-  });
-  [].forEach.call(document.querySelectorAll('#fTipo .chip'),function(ch){
-    ch.addEventListener('click',function(){
-      [].forEach.call(document.querySelectorAll('#fTipo .chip'),function(x){x.classList.remove('on')});
-      ch.classList.add('on');fTipo=ch.getAttribute('data-tipo');renderCom();
-    });
-  });
+  [].forEach.call(document.querySelectorAll('.p-tab'),function(t){t.addEventListener('click',function(){[].forEach.call(document.querySelectorAll('.p-tab'),function(x){x.classList.remove('on')});t.classList.add('on');
+    document.getElementById('tab-sintese').classList.toggle('on',t.getAttribute('data-tab')==='sintese');document.getElementById('tab-comentarios').classList.toggle('on',t.getAttribute('data-tab')==='comentarios');painel.scrollTop=0;});});
+  function chips(sel,attr,set){[].forEach.call(document.querySelectorAll(sel+' .chip'),function(ch){ch.addEventListener('click',function(){[].forEach.call(document.querySelectorAll(sel+' .chip'),function(x){x.classList.remove('on')});ch.classList.add('on');set(ch.getAttribute(attr));renderCom();});});}
+  chips('#fLoja','data-loja',function(v){fLoja=v});chips('#fTipo','data-tipo',function(v){fTipo=v});chips('#fSem','data-sem',function(v){fSem=v});
+  /* ---------- slide 6: cancelamentos loja a loja ---------- */
+  var CANC={"Rede":{"n":48,"sup":18,"rs":1285.84,"ped":3275,"motivos":[["Pedido ou item errado",19,519.05,"exp"],["Pedido atrasado",4,139.15,"log"],["Parte do pedido não enviada",7,134.34,"exp"],["Tempo de entrega alto",3,108.63,"log"],["Impróprio para consumo",4,83.43,"qual"],["Sem entregadores disponíveis",1,67.56,"log"],["Suspeita de golpe/trote",3,63.94,"out"],["Local de entrega errado",2,60.84,"log"],["Cliente não localizado",2,41.96,"log"],["Fora da área de entrega",1,30.97,"log"],["Não confirmado pela loja",1,17.99,"out"],["Problema no veículo",1,17.98,"log"]],"dias":[["Seg",5],["Ter",6],["Qua",9],["Qui",6],["Sex",5],["Sáb",13],["Dom",4]],"turnos":[["00-02",1],["10-12",18],["12-14",10],["14-16",6],["16-18",2],["18-20",3],["20-22",5],["22-00",3]],"origem":{"Cliente":39,"Loja":5,"Logística":3,"iFood":1},"contest":{"disp":12,"feitas":1,"rs":367.77},"nao_resp":2,"aceitou":13,"itens":[["Strogonoff De Frango",14],["Coca Cola Zero 200ml",5],["Frango Chapeado Com Salada",5]],"leitura":"81% dos cancelamentos partem do cliente e <b>\"item errado\"</b> é o motivo nº 1 em todas as unidades (19 casos · R$ 519). O <b>strogonoff de frango</b> é o item mais cancelado (14×) — vale olhar porcionamento e conferência desse prato. Há dinheiro na mesa: <b>12 cancelamentos eram contestáveis e só 1 foi contestado</b> (R$ 343 não recuperados). Dois casos aconteceram porque a loja não respondeu a tempo ao cliente — o mesmo fio das respostas às negociações."},"Gleba Palhano":{"n":19,"sup":6,"rs":559.42,"ped":1326,"motivos":[["Pedido ou item errado",6,191.31,"exp"],["Sem entregadores disponíveis",1,67.56,"log"],["Tempo de entrega alto",1,61.17,"log"],["Impróprio para consumo",2,39.47,"qual"],["Pedido atrasado",1,36.23,"log"],["Fora da área de entrega",1,30.97,"log"],["Local de entrega errado",1,28.28,"log"],["Parte do pedido não enviada",2,25.5,"exp"],["Suspeita de golpe/trote",1,21.98,"out"],["Cliente não localizado",1,20.98,"log"],["Não confirmado pela loja",1,17.99,"out"],["Problema no veículo",1,17.98,"log"]],"dias":[["Seg",1],["Ter",3],["Qua",1],["Qui",6],["Sex",3],["Sáb",3],["Dom",2]],"turnos":[["10-12",11],["12-14",4],["14-16",1],["16-18",1],["18-20",1],["22-00",1]],"origem":{"Cliente":13,"Loja":3,"Logística":2,"iFood":1},"contest":{"disp":4,"feitas":0,"rs":122.44},"nao_resp":1,"aceitou":6,"itens":[["Strogonoff De Frango",6],["Coca Cola Zero 200ml",4],["Iscas De Frango Empanada",2]],"leitura":"Maior valor da rede (R$ 559) e o leque mais variado de motivos (12 diferentes). <b>15 dos 19 no almoço</b>, com quinta-feira como pico. A família logística pesa aqui — sem entregadores, tempo alto, atraso, fora de área, local errado, não localizado e veículo somam <b>R$ 263 (47%)</b>. \"Impróprio para consumo\" apareceu 2 vezes. 4 contestáveis (R$ 122), nenhum contestado."},"Aeroporto":{"n":17,"sup":7,"rs":490.26,"ped":964,"motivos":[["Pedido ou item errado",7,208.89,"exp"],["Pedido atrasado",2,75.94,"log"],["Parte do pedido não enviada",2,60.47,"exp"],["Tempo de entrega alto",2,47.46,"log"],["Suspeita de golpe/trote",2,41.96,"out"],["Local de entrega errado",1,32.56,"log"],["Impróprio para consumo",1,22.98,"qual"]],"dias":[["Seg",2],["Ter",2],["Qua",5],["Qui",0],["Sex",1],["Sáb",5],["Dom",2]],"turnos":[["00-02",1],["10-12",5],["12-14",4],["14-16",1],["16-18",1],["18-20",1],["20-22",3],["22-00",1]],"origem":{"Cliente":15,"Loja":2},"contest":{"disp":7,"feitas":0,"rs":220.66},"nao_resp":0,"aceitou":2,"itens":[["Strogonoff De Frango",5],["Frango Chapeado Com Salada",3],["Strogonoff De Carne",2]],"leitura":"<b>\"Item errado\" concentra 7 casos e R$ 209</b> — 43% da perda da unidade. É a maior oportunidade de recuperação da rede: <b>7 cancelamentos contestáveis (R$ 221) e nenhum contestado</b>. Sábado e quarta empatam em 5 casos; 6 dos 17 no jantar — a única unidade com peso relevante à noite. 7 dos 17 impactaram o Super."},"Centro":{"n":5,"sup":4,"rs":99.02,"ped":325,"motivos":[["Pedido ou item errado",2,50.65,"exp"],["Parte do pedido não enviada",3,48.37,"exp"]],"dias":[["Seg",0],["Ter",0],["Qua",3],["Qui",0],["Sex",1],["Sáb",1],["Dom",0]],"turnos":[["10-12",1],["14-16",1],["18-20",1],["20-22",1],["22-00",1]],"origem":{"Cliente":5},"contest":{"disp":1,"feitas":1,"rs":24.67},"nao_resp":1,"aceitou":1,"itens":[["Salada Com Iscas De Frango Empanado",1],["Coca Cola Zero 350 ml Lata",1],["Iscas De Frango Apimentada",1]],"leitura":"Poucos casos (5), mas <b>4 impactam o Super (80%)</b> — todos de expedição: parte do pedido não enviada 3× e item errado 2×. Concentração na quarta (3) e no jantar (3). É a <b>única unidade que contestou um cancelamento</b> (1 de 1) — o exemplo a replicar na rede."},"Saul Elkind":{"n":7,"sup":1,"rs":137.14,"ped":660,"motivos":[["Pedido ou item errado",4,68.2,"exp"],["Pedido atrasado",1,26.98,"log"],["Cliente não localizado",1,20.98,"log"],["Impróprio para consumo",1,20.98,"qual"]],"dias":[["Seg",2],["Ter",1],["Qua",0],["Qui",0],["Sex",0],["Sáb",4],["Dom",0]],"turnos":[["10-12",1],["12-14",2],["14-16",3],["20-22",1]],"origem":{"Cliente":6,"Logística":1},"contest":{"disp":0,"feitas":0,"rs":0.0},"nao_resp":0,"aceitou":4,"itens":[["Strogonoff De Frango",3],["Frango Chapeado Com Salada",1],["Salada Com  Frango Chapeado Ao Molho Teriyaki",1]],"leitura":"Melhor cancelamento da rede: <b>7 casos e só 1 com impacto no Super</b>. \"Item errado\" 4×; <b>4 dos 7 no sábado</b> — a conferência de sábado resolve mais da metade. Nenhum caso contestável; 4 dos 7 foram aceitos pela loja sem negociar."}};
+  function brl(v){return 'R$ '+v.toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,'.');}
+  function pct(a,b){return (a/b*100).toFixed(2).replace('.',',')+'%';}
+  function bars(el,items,fmt,cls){el.innerHTML='';var mx=0;items.forEach(function(it){if(it[1]>mx)mx=it[1];});
+    items.forEach(function(it){var row=document.createElement('div');row.className='mb-row';
+      var l=document.createElement('span');l.textContent=it[0];
+      var tr=document.createElement('div');tr.className='mb-track';var f=document.createElement('div');f.className='mb-fill '+(cls?cls(it):'calm');f.setAttribute('data-w',mx?Math.round(it[1]/mx*100):0);tr.appendChild(f);
+      var v=document.createElement('span');v.className='mb-val num';v.innerHTML=fmt(it);
+      row.appendChild(l);row.appendChild(tr);row.appendChild(v);el.appendChild(row);});
+    setTimeout(function(){[].forEach.call(el.querySelectorAll('.mb-fill'),function(x){x.style.width=x.getAttribute('data-w')+'%';});},40);}
+  function renderCanc(k){var d=CANC[k];
+    var kp=document.getElementById('cn-kpis');
+    var naoC=d.contest.disp-d.contest.feitas;
+    kp.innerHTML='<div class="cn-kpi"><div class="k">Cancelamentos</div><div class="v num">'+d.n+' <small>· '+pct(d.n,d.ped)+' dos pedidos</small></div><div class="f">'+d.ped.toLocaleString('pt-BR')+' pedidos no mês</div></div>'
+      +'<div class="cn-kpi"><div class="k">Com impacto no Super</div><div class="v num">'+d.sup+' <small>· '+pct(d.sup,d.ped)+'</small></div><div class="f">régua do programa: ≤ ~1%</div></div>'
+      +'<div class="cn-kpi"><div class="k">Valor cancelado</div><div class="v num">'+brl(d.rs)+'</div><div class="f">com entrega, no mês</div></div>'
+      +'<div class="cn-kpi'+(naoC>0?' alerta':'')+'"><div class="k">Contestáveis · contestados</div><div class="v num">'+d.contest.disp+' <small>·</small> '+d.contest.feitas+'</div><div class="f">'+(d.contest.disp?brl(d.contest.rs)+' contestáveis':'nenhum caso contestável')+(naoC>0?' · '+naoC+' sem contestação':'')+'</div></div>';
+    bars(document.getElementById('cn-motivos'),d.motivos.map(function(m){return [m[0],m[2],m[1],m[3]];}),function(it){return it[2]+'× <small>· '+brl(it[1])+'</small>';},function(it){return it[3]==='exp'||it[3]==='qual'?'bad':(it[3]==='log'?'warn':'mut');});
+    var mxd=0;d.dias.forEach(function(x){if(x[1]>mxd)mxd=x[1];});
+    bars(document.getElementById('cn-dias'),d.dias,function(it){return it[1];},function(it){return it[1]===mxd&&mxd>0?'bad':'calm';});
+    var mxt=0;d.turnos.forEach(function(x){if(x[1]>mxt)mxt=x[1];});
+    bars(document.getElementById('cn-turnos'),d.turnos,function(it){return it[1];},function(it){return it[1]===mxt&&mxt>0?'bad':'calm';});
+    bars(document.getElementById('cn-itens'),d.itens,function(it){return it[1]+'×';},function(){return 'warn';});
+    var og=document.getElementById('cn-origem');og.innerHTML='';Object.keys(d.origem).forEach(function(o){var s=document.createElement('span');s.innerHTML=o+' <b>'+d.origem[o]+'</b>';og.appendChild(s);});
+    document.getElementById('cn-leitura').innerHTML='<b>'+(k==='Rede'?'Rede':k)+':</b> '+d.leitura;}
+  [].forEach.call(document.querySelectorAll('#cancSel .chip'),function(ch){ch.addEventListener('click',function(){[].forEach.call(document.querySelectorAll('#cancSel .chip'),function(x){x.classList.remove('on')});ch.classList.add('on');renderCanc(ch.getAttribute('data-canc'));});});
+  renderCanc('Rede');
 })();
+
 </script>
 </body>
 </html>
